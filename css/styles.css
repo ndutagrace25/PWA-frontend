@@ -72,11 +72,10 @@ nav .sidenav-trigger {
     color: var(--secondary);
     font-weight: bold;
     font-size: 0.8rem;
+    margin-left: 10px;
 }
 
-.vendor-details .col {
-    line-height: 40px;
-}
+.vendor-details .col {}
 
 .vendor-delete {}
 

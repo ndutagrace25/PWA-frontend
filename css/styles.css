@@ -1,0 +1,111 @@
+/* colours */
+:root {
+    --primary: #009688;
+    --secondary: #00897b;
+    --title: #004d40;
+}
+
+/* layout styles */
+nav {
+    background: var(--primary);
+    border-bottom: 10px solid var(--secondary);
+}
+
+nav a {
+    text-transform: uppercase;
+    color: var(--title);
+}
+
+nav a span {
+    font-weight: bold;
+}
+
+nav a span:hover {
+    cursor: pointer;
+}
+
+nav .sidenav-trigger {
+    margin: 0;
+}
+
+/* Categories */
+.categories .card-panel {
+    box-shadow: none;
+    border-radius: 10px;
+}
+
+.categories .card-panel.active {
+    border: 2px var(--secondary) solid;
+}
+
+.categories .card-panel h6 {
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* vendor styles */
+.vendors {
+    margin-top: 20px;
+}
+
+.card-panel.vendor {
+    box-shadow: none;
+}
+
+.vendor-title {
+    font-size: 1.2rem;
+}
+
+.vendor-details .row {
+    margin-bottom: 0;
+}
+
+.vendor-details .col {
+    font-size: 1.2rem;
+}
+
+.vendor-details .col i {
+    color: #757575;
+}
+
+.vendor-details .col span {
+    color: var(--secondary);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+.vendor-details .col {
+    line-height: 40px;
+}
+
+.vendor-delete {}
+
+.vendor-ingredients {}
+
+/* Buttons */
+.btn {
+    background-color: var(--secondary);
+    color: var(--title);
+    font-weight: bold;
+}
+
+.btn:hover {
+    background-color: var(--primary);
+}
+
+/* Motorcycle */
+.motorcycle img {
+    max-width: 50px;
+}
+
+.motorcycle i {
+    font-size: 1rem;
+}
+
+.row.motorcycle {
+    margin-bottom: 0;
+}
+
+.motorcycle-image {
+    padding-top: 10px !important;
+}

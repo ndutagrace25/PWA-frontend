@@ -1,4 +1,4 @@
-const staticCacheName = "destination-laikipia-static-v18";
+const staticCacheName = "destination-laikipia-static-v19";
 const assets = [
     '/',
     '/index.html',
@@ -21,6 +21,8 @@ const assets = [
     '/img/steak.png',
     '/img/store.png',
     '/img/vendor.png',
+    '/img/jeep.png',
+    '/img/consult.png',
     'https://fonts.googleapis.com/icon?family=Material+Icons',
     'https://fonts.gstatic.com/s/materialicons/v50/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2',
     'https://unpkg.com/axios/dist/axios.min.js'

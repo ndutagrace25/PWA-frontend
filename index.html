@@ -159,8 +159,8 @@
             <a href="">
                 <i class="material-icons prefix">navigate_before</i>
             </a>
-            <span>2 of 6</span>
-            <a href="">
+            <div id="paginationCount"></div>
+            <a href="" onclick="nextPage()">
                 <i class="material-icons prefix">navigate_next</i>
             </a>
         </div>
@@ -176,15 +176,46 @@
 
         let allVendors;
 
+
+
         const fetchVendors = () => {
             axios.get('https://destination-backend.mawingunetworks.com/vendors')
                 .then(response => {
                     allVendors = response.data;
 
                     displayVendors(allVendors);
+                    nextPage(allVendors);
                 })
                 .catch(error => console.error(error));
         };
+
+        let state = {
+            'rows': 10
+        }
+
+        const pagination = (querySet, page, rows) => {
+            let trimStart = (page - 1) * rows;
+            let trimEnd = trimStart + rows;
+
+            let trimmedData = querySet.slice(trimStart, trimEnd);
+
+            let pages = Math.ceil(querySet.length / rows);
+
+            return {
+                'querySet': trimmedData,
+                'pages': pages
+            }
+        }
+
+        const nextPage = (vendors) => {
+            console.log(vendors);
+            console.log('I am clicked');
+            let page = 0;
+
+            page++;
+            console.log(page);
+            displayVendors(vendors, page);
+        }
 
         const filterVendorCategory = category_id => {
 
@@ -211,10 +242,11 @@
             displayVendors(filteredVendors);
         }
 
-        const displayVendors = (vendors) => {
+        const displayVendors = (vendors, page) => {
+            const data = pagination(vendors, page, state.rows);
+            // console.log(data);
 
-            const vendorsDisplay = vendors.map(vendor => (
-                console.log(vendor),
+            const vendorsDisplay = data.querySet.map(vendor => (
                 '<div class="card-item">' +
                 '<div class="card-top">' +
                 '<div class="card-top-left">' +
@@ -244,6 +276,9 @@
             ));
 
             document.getElementById("vendors").innerHTML = vendorsDisplay;
+            document.getElementById("paginationCount").innerHTML = (
+                '<span>' + page + ' of ' + data.pages + '</span>'
+            )
         }
 
         document.addEventListener("DOMContentLoaded", function () {

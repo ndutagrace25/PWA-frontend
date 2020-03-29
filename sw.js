@@ -1,9 +1,11 @@
-const staticCacheName = "destination-laikipia-static-v9";
+const staticCacheName = "destination-laikipia-static-v10";
+const dynamicCatcheName = "site-dynamic-v3";
 const assets = [
     '/',
     '/index.html',
     '/pages/riders.html',
     '/pages/vendor.html',
+    '/pages/fallback.html',
     '/js/script.js',
     '/js/materialize.min.js',
     '/css/materialize.min.css',
@@ -49,7 +51,7 @@ self.addEventListener('activate', (evt) => {
         caches.keys().then(keys => {
             return Promise.all(
                 keys
-                .filter(key => key !== staticCacheName)
+                .filter(key => key !== staticCacheName && key !== dynamicCatcheName)
                 .map(key => caches.delete(key))
             );
         })
@@ -57,11 +59,36 @@ self.addEventListener('activate', (evt) => {
 });
 
 // Fetch event
-self.addEventListener('fetch', (evt) => {
-    // console.log('service worker fetching', evt);
+// self.addEventListener('fetch', (evt) => {
+//     // console.log('service worker fetching', evt);
+//     evt.respondWith(
+//         caches.match(evt.request).then((cacheResponse) => {
+//             return cacheResponse || fetch(evt.request);
+//         })
+//     );
+// });
+
+self.addEventListener("fetch", evt => {
+    // console.log('fetch event', evt);
     evt.respondWith(
-        caches.match(evt.request).then((cacheResponse) => {
-            return cacheResponse || fetch(evt.request);
+        caches
+        .match(evt.request)
+        .then(cacheRes => {
+            return (
+                cacheRes ||
+                fetch(evt.request).then(fetchRes => {
+                    return caches.open(dynamicCatcheName).then(cache => {
+                        cache.put(evt.request.url, fetchRes.clone());
+                        limitCacheSize(dynamicCatcheName, 20);
+                        return fetchRes;
+                    });
+                })
+            );
+        })
+        .catch(() => {
+            if (evt.request.url.indexOf(".html") > -1) {
+                return caches.match("/pages/fallback.html");
+            }
         })
     );
 });

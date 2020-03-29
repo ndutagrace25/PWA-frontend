@@ -100,7 +100,7 @@ a.category-item.active {
 
 /* Onsare Vendor and Rider card design */
 .card-item {
-    background: #EEEEEE; margin: 0 15 15px !important; color: #707070; font-size: 12px; border-radius: 0 !important; padding: 12px; display: flex; flex-direction: column;
+    background: #EEEEEE; margin: 0 15 15px !important; color: #707070; font-size: 12px; border-radius: 0 !important; padding: 8 12 6px; display: flex; flex-direction: column;
 }
 .card-top {
     display: flex; flex-wrap: nowrap !important; width: 100%; align-items: flex-start;
@@ -109,7 +109,7 @@ a.category-item.active {
     width: 80%; display: flex; flex-direction: column;
 }
 .card-titled {
-    color: #546E7A; font-size: 18px; font-weight: 500 !important; margin-bottom: .4rem;
+    color: #546E7A; font-size: 18px; font-weight: 500 !important; margin-bottom: 0 !important;
 }
 .phone-wrapper {
     display: flex; flex-direction: row; flex-wrap: nowrap !important;
@@ -125,13 +125,14 @@ a.phone {
 }
 .card-icon img { width: 100%;}
 .location {
-    width: 100%;  display: flex; flex-direction: row; flex-wrap: nowrap !important; margin-top: .4rem;
+    width: 80%;  display: flex; flex-direction: row; flex-wrap: nowrap !important; margin-top: 0 !important;
 }
 .location span {
     color:#AAAAAA; font-size: 14px; margin-left: 15px; line-height: 26px;
 }
 p.description {
     margin-bottom: 0 !important;
+    margin-top: 0 !important;
 }
 /* End of Onsare Vendor and Rider card design */
 

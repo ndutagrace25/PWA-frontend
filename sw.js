@@ -1,4 +1,4 @@
-const staticCacheName = "destination-laikipia-static-v151";
+const staticCacheName = "destination-laikipia-static-v153";
 const assets = [
     '/',
     '/index.html',

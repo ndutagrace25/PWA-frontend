@@ -48,19 +48,14 @@ nav .sidenav-trigger {
 .search-icon {
     color: var(--secondary); font-size: 2rem;
 }
-.input-field .prefix.active {
-    color: var(--primary) !important;
-}
+/* .input-field .prefix.active { color: var(--primary) !important; } */
 .input-field .prefix~input {
     margin-left: 2.4rem;
 }
 input[type=text]:not(.browser-default) {
     height: 2.8rem;
 }
-input[type=text]:not(.browser-default):focus:not([readonly]) {
-    border-bottom: 1px solid var(--primary);
-    box-shadow: 0 1px 0 0 var(--primary);
-}
+/* input[type=text]:not(.browser-default):focus:not([readonly]) {border-bottom: 1px solid var(--primary); box-shadow: 0 1px 0 0 var(--primary);} */
 
 .material-icons {
     color: var(--secondary);
@@ -68,7 +63,7 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
 .reset-icon {
     display: flex; margin-left: auto; margin-right: 15px; color: var(--primary);
 }
-.reset-icon .material-icons {color: var(--primary) !important;}
+.reset-icon .material-icons {color: #4db6ac !important;}
 
 /* Onsare Categories */
 .categories-wrapper {

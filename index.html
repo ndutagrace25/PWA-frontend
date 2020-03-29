@@ -74,7 +74,11 @@
 
       <!-- Start of Categories Dropdown select -->
       <div class="input-field select-field">
-        <select class="browser-default" id="selectCategory">
+        <select
+          class="browser-default"
+          id="selectCategory"
+          onchange="filterVendorCategory()"
+        >
           <option value="" disabled selected>Select a category</option>
         </select>
       </div>
@@ -180,10 +184,24 @@
       let itemPerPage = 10;
       let curentPage = 0;
       let pages;
-
+      let filteredLocation = "";
+      let category = "";
+      let name = "";
       const fetchVendors = () => {
+        let url = `http://localhost:5001/vendors`;
+
+        if (filteredLocation !== "") {
+          url += `?location=${filteredLocation}`;
+        }
+        if (category !== "") {
+          url += `?category=${category}`;
+        }
+
+        if (name !== "") {
+          url += `&name=${name}`;
+        }
         axios
-          .get("https://destination-backend.mawingunetworks.com/vendors")
+          .get(url)
           .then(response => {
             allVendors = response.data;
 
@@ -196,7 +214,7 @@
 
       const fetchCategories = () => {
         axios
-          .get("https://destination-backend.mawingunetworks.com/vendors")
+          .get("http://localhost:5001/category")
           .then(response => {
             allCategories = response.data;
             displayCategories(allCategories);
@@ -236,11 +254,14 @@
         displayVendors(allVendors);
       };
 
-      const filterVendorCategory = category_id => {
-        vendorCategory = category_id;
+      const filterVendorCategory = () => {
+
+        vendorCategory = parseInt(
+          document.getElementById("selectCategory").value
+        );
 
         const filteredVendors = allVendors.filter(
-          vendor => vendor.category_id === category_id
+          vendor => vendor.category_id === vendorCategory
         );
 
         displayVendors(filteredVendors);
@@ -313,9 +334,8 @@
 
       const displayCategories = allCategories => {
         const categories = allCategories.map(
-          cat => "<option>" + cat.name + "</option>"
+          cat => "<option value=" + cat.id + ">" + cat.name + "</option>"
         );
-        console.log(categories);
         document.getElementById("selectCategory").innerHTML = categories.join(
           ""
         );

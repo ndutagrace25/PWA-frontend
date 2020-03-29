@@ -3,8 +3,8 @@
     "short_name": "DestinationLaikipia",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#009688",
-    "theme_color": "#00897b",
+    "background_color": "#ffffff",
+    "theme_color": "#77BA00",
     "orientation": "portrait-primary",
     "icons": [{
             "src": "/img/icons/icon-72x72.png",

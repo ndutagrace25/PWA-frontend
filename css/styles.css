@@ -42,8 +42,8 @@ nav .sidenav-trigger {
 .search-wrapper .input-field {
     width: 80%; display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; margin-bottom: 0 !important;
 }
-.filter-wrapper { margin-right: 15px !important; margin-left: 15px !important; }
-.select-field { margin-top: 0 !important; }
+/* .filter-wrapper { margin-right: 15px !important; margin-left: 15px !important; } */
+.select-field { margin-right: 15px !important; margin-left: 15px !important; margin-top: 0 !important; }
 .input-field .label-select{ margin-left: 15px !important; }
 .search-icon {
     color: var(--secondary); font-size: 2rem;

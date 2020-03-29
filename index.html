@@ -1,87 +1,86 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Destination Laikipia</title>
 
     <!--Import Google Icon Font-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
-    <link rel="stylesheet" href="/css/styles.css">
-    <link rel="manifest" href="/manifest.json">
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/materialize.min.css"
+      media="screen,projection"
+    />
+    <link rel="stylesheet" href="/css/styles.css" />
+    <link rel="manifest" href="/manifest.json" />
     <!-- ios support -->
-    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-72x72.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-128x128.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-144x144.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-152x152.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-384x384.png">
-    <link rel="apple-touch-icon" href="/img/icons/icon-512x512.png">
-    <meta name="apple-mobile-web-app-status-bar" content="#00897b">
-    <meta name="theme-color" content="#00897b">
-</head>
+    <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-128x128.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-152x152.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-384x384.png" />
+    <link rel="apple-touch-icon" href="/img/icons/icon-512x512.png" />
+    <meta name="apple-mobile-web-app-status-bar" content="#00897b" />
+    <meta name="theme-color" content="#00897b" />
+  </head>
 
-<body class="white">
-
+  <body class="white">
     <!-- Nav -->
     <nav class="z-depth-0">
-        <div>
-            <a href="/">vendors</a>
-            <span class="right white-text">
-                <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-            </span>
-        </div>
+      <div>
+        <a href="/">vendors</a>
+        <span class="right white-text">
+          <i class="material-icons sidenav-trigger" data-target="side-menu"
+            >menu</i
+          >
+        </span>
+      </div>
     </nav>
 
     <!-- Side menu -->
     <ul id="side-menu" class="sidenav side-menu">
-        <li>
-            <a class="subheader">Destination Laikipia</a>
-        </li>
-        <li>
-            <a href="/" class="waves-effect">Vendors</a>
-        </li>
-        <li>
-            <a href="/pages/riders.html" class="waves-effect">Transport</a>
-        </li>
+      <li>
+        <a class="subheader">Destination Laikipia</a>
+      </li>
+      <li>
+        <a href="/" class="waves-effect">Vendors</a>
+      </li>
+      <li>
+        <a href="/pages/riders.html" class="waves-effect">Transport</a>
+      </li>
     </ul>
 
     <!-- Vendors Screen Wrapper-->
     <div class="screen-wrapper">
-
-        <!-- Start of Search Wrapper-->
-        <div class="search-wrapper">
-            <div class="input-field">
-                <i class="material-icons prefix search-icon">search</i>
-                <input type="text" id="vendor-location" class="autocomplete">
-                <label for="vendor-location">Search Vendor location or name</label>
-            </div>
-            <div class="reset-icon">
-                <a href="/"><i class="material-icons">autorenew</i></a>
-            </div>
+      <!-- Start of Search Wrapper-->
+      <div class="search-wrapper">
+        <div class="input-field">
+          <i class="material-icons prefix search-icon">search</i>
+          <input type="text" id="vendor-location" class="autocomplete" />
+          <label for="vendor-location">Search Vendor location or name</label>
         </div>
-        <!-- End of Search Wrapper-->
-
-        <!-- Start of Categories Dropdown select -->
-        <div class="input-field select-field">
-            <select class="icons">
-                <option value="" disabled selected>Select a category</option>
-                <option value="" data-icon="/img/food.svg">Eateries</option>
-                <option value="" data-icon="/img/motorcycle.png">Butcheries</option>
-                <option value="" data-icon="/img/service.svg">Groceries</option>
-                <option value="" data-icon="/img/other-supplies.svg">Shops</option>
-                <option value="" data-icon="/img/other-supplies.svg">Pharmaceuticals</option>
-                <option value="" data-icon="/img/other-supplies.svg">Gas</option>
-                <option value="" data-icon="/img/other-supplies.svg">Services</option>
-                <option value="" data-icon="/img/other-supplies.svg">Wines & Spirits</option>
-            </select>
+        <div class="reset-icon">
+          <a href="/"><i class="material-icons">autorenew</i></a>
         </div>
-        <!-- Start of Categories Dropdown select -->
+      </div>
+      <!-- End of Search Wrapper-->
 
-        <!-- <div class="row center categories">
+      <!-- Start of Categories Dropdown select -->
+      <div class="input-field select-field">
+        <select class="browser-default" id="selectCategory">
+          <option value="" disabled selected>Select a category</option>
+        </select>
+      </div>
+      <!-- Start of Categories Dropdown select -->
+
+      <!-- <div class="row center categories">
             <div class="col s4">
                 <a href="javascript:void(0)" onclick="filterVendorCategory(1)">
                     <div class="card-panel grey lighten-3">
@@ -108,8 +107,8 @@
             </div>
         </div> -->
 
-        <!-- Start of Card Item-->
-        <!-- <div class="card-item">
+      <!-- Start of Card Item-->
+      <!-- <div class="card-item">
             <div class="card-top">
                 <div class="card-top-left">
                     <span class="card-titled">Kisumu Dala Fish joint</span>
@@ -142,22 +141,22 @@
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
             </p>
         </div> -->
-        <!-- End of Card Item-->
+      <!-- End of Card Item-->
 
-        <!-- The list of vendors is rendered inside the div below -->
-        <div id="vendors"></div>
+      <!-- The list of vendors is rendered inside the div below -->
+      <div id="vendors"></div>
 
-        <!-- Start of Pagination-->
-        <div class="paginate">
-            <a href="javascript:void(0)" onclick="previousPage()">
-                <i class="material-icons prefix">navigate_before</i>
-            </a>
-            <div id="paginationCount"></div>
-            <a href="javascript:void(0)" onclick="nextPage()">
-                <i class="material-icons prefix">navigate_next</i>
-            </a>
-        </div>
-        <!-- End of Pagination-->
+      <!-- Start of Pagination-->
+      <div class="paginate">
+        <a href="javascript:void(0)" onclick="previousPage()">
+          <i class="material-icons prefix">navigate_before</i>
+        </a>
+        <div id="paginationCount"></div>
+        <a href="javascript:void(0)" onclick="nextPage()">
+          <i class="material-icons prefix">navigate_next</i>
+        </a>
+      </div>
+      <!-- End of Pagination-->
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
@@ -165,152 +164,187 @@
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var elems = document.querySelectorAll('select');
-            var options = {
-                classes: "filter-wrapper"
-            }
-            var instances = M.FormSelect.init(elems, options);
-        });
+      document.addEventListener("DOMContentLoaded", function() {
+        var elems = document.querySelectorAll("select");
+        var options = {
+          classes: "filter-wrapper"
+        };
+        var instances = M.FormSelect.init(elems, options);
+      });
     </script>
     <script>
-        let vendorCategory = 0;
+      let vendorCategory = 0;
 
-        let allVendors;
-        let itemPerPage = 10;
-        let curentPage = 0;
-        let pages;
+      let allVendors;
+      let allCategories;
+      let itemPerPage = 10;
+      let curentPage = 0;
+      let pages;
 
-        const fetchVendors = () => {
-            axios.get('https://destination-backend.mawingunetworks.com/vendors')
-                .then(response => {
-                    allVendors = response.data;
+      const fetchVendors = () => {
+        axios
+          .get("https://destination-backend.mawingunetworks.com/vendors")
+          .then(response => {
+            allVendors = response.data;
 
-                    // displayVendors(allVendors);
-                    nextPage();
-                    // previousPage();
-                })
-                .catch(error => console.error(error));
+            // displayVendors(allVendors);
+            nextPage();
+            // previousPage();
+          })
+          .catch(error => console.error(error));
+      };
+
+      const fetchCategories = () => {
+        axios
+          .get("https://destination-backend.mawingunetworks.com/vendors")
+          .then(response => {
+            allCategories = response.data;
+            displayCategories(allCategories);
+          })
+          .catch(error => console.error(error));
+      };
+
+      const pagination = (querySet, page, rows) => {
+        let trimStart = (page - 1) * rows;
+        let trimEnd = trimStart + rows;
+
+        let trimmedData = querySet.slice(trimStart, trimEnd);
+
+        pages = Math.ceil(querySet.length / rows);
+
+        return {
+          querySet: trimmedData,
+          pages: pages
         };
+      };
 
+      const nextPage = () => {
+        if (curentPage === pages) {
+          return curentPage;
+        } else {
+          curentPage++;
+        }
+        displayVendors(allVendors);
+      };
 
-        const pagination = (querySet, page, rows) => {
-            let trimStart = (page - 1) * rows;
-            let trimEnd = trimStart + rows;
+      const previousPage = () => {
+        if (curentPage === 1) {
+          return curentPage;
+        } else {
+          curentPage--;
+        }
+        displayVendors(allVendors);
+      };
 
-            let trimmedData = querySet.slice(trimStart, trimEnd);
+      const filterVendorCategory = category_id => {
+        vendorCategory = category_id;
 
-            pages = Math.ceil(querySet.length / rows);
+        const filteredVendors = allVendors.filter(
+          vendor => vendor.category_id === category_id
+        );
 
-            return {
-                'querySet': trimmedData,
-                'pages': pages
-            }
+        displayVendors(filteredVendors);
+      };
+
+      const filterVendorLocation = () => {
+        const location = document.getElementById("vendor-location").value;
+
+        let filteredVendors;
+
+        if (vendorCategory > 0) {
+          filteredVendors = allVendors.filter(
+            vendor => vendor.category_id === vendorCategory
+          );
+          filteredVendors = filteredVendors.filter(
+            vendor => vendor.location === location
+          );
+        } else {
+          filteredVendors = allVendors.filter(
+            vendor => vendor.location === location
+          );
         }
 
-        const nextPage = () => {
-            if (curentPage === pages) {
-                return curentPage;
-            } else {
-                curentPage++;
-            }
-            displayVendors(allVendors);
-        }
+        displayVendors(filteredVendors);
+      };
 
-        const previousPage = () => {
-            if (curentPage === 1) {
-                return curentPage;
-            } else {
-                curentPage--;
-            }
-            displayVendors(allVendors);
-        }
+      const displayVendors = vendors => {
+        const page = curentPage;
+        const data = pagination(vendors, page, itemPerPage);
+        // console.log(data);
 
-        const filterVendorCategory = category_id => {
+        const vendorsDisplay = data.querySet.map(
+          vendor =>
+            '<div class="card-item">' +
+            '<div class="card-top">' +
+            '<div class="card-top-left">' +
+            '<span class="card-titled">' +
+            vendor.shop +
+            "</span>" +
+            '<div class="phone-wrapper">' +
+            ' <i class="material-icons prefix">phone</i>' +
+            '<div class="phones">' +
+            '<a href="tel:' +
+            vendor.phone +
+            '" class="phone">' +
+            vendor.phone +
+            "</a>" +
+            "</div>" +
+            "</div>" +
+            " </div>" +
+            '<div class="card-icon">' +
+            '<img class="responsive-img" src="/img/food.svg" alt="Food and Drugs">' +
+            "</div>" +
+            " </div>" +
+            '  <div class="location">' +
+            ' <i class="material-icons prefix">location_on</i>' +
+            " <span>" +
+            " " +
+            vendor.location +
+            "" +
+            " </span>" +
+            " </div>" +
+            '<p class="description">' +
+            "" +
+            vendor.category +
+            "" +
+            " </p>" +
+            "</div>"
+        );
 
-            vendorCategory = category_id;
+        document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
+        document.getElementById("paginationCount").innerHTML =
+          "<span>" + page + " of " + data.pages + "</span>";
+      };
 
-            const filteredVendors = allVendors.filter(vendor => vendor.category_id === category_id);
+      const displayCategories = allCategories => {
+        const categories = allCategories.map(
+          cat => "<option>" + cat.name + "</option>"
+        );
+        console.log(categories);
+        document.getElementById("selectCategory").innerHTML = categories.join(
+          ""
+        );
+      };
 
-            displayVendors(filteredVendors);
-        }
-
-        const filterVendorLocation = () => {
-
-            const location = document.getElementById("vendor-location").value;
-
-            let filteredVendors;
-
-            if (vendorCategory > 0) {
-                filteredVendors = allVendors.filter(vendor => vendor.category_id === vendorCategory);
-                filteredVendors = filteredVendors.filter(vendor => vendor.location === location);
-            } else {
-                filteredVendors = allVendors.filter(vendor => vendor.location === location);
-            }
-
-            displayVendors(filteredVendors);
-        }
-
-        const displayVendors = (vendors) => {
-            const page = curentPage;
-            const data = pagination(vendors, page, itemPerPage);
-            // console.log(data);
-
-            const vendorsDisplay = data.querySet.map(vendor => (
-                '<div class="card-item">' +
-                '<div class="card-top">' +
-                '<div class="card-top-left">' +
-                '<span class="card-titled">' + vendor.shop + '</span>' +
-                '<div class="phone-wrapper">' +
-                ' <i class="material-icons prefix">phone</i>' +
-                '<div class="phones">' +
-                '<a href="tel:' + vendor.phone + '" class="phone">' + vendor.phone + '</a>' +
-                '</div>' +
-                '</div>' +
-                ' </div>' +
-                '<div class="card-icon">' +
-                '<img class="responsive-img" src="/img/food.svg" alt="Food and Drugs">' +
-                '</div>' +
-                ' </div>' +
-
-                '  <div class="location">' +
-                ' <i class="material-icons prefix">location_on</i>' +
-                ' <span>' +
-                ' ' + vendor.location + '' +
-                ' </span>' +
-                ' </div>' +
-                '<p class="description">' +
-                '' + vendor.category + '' +
-                ' </p>' +
-                '</div>'
-            ));
-
-            document.getElementById("vendors").innerHTML = vendorsDisplay;
-            document.getElementById("paginationCount").innerHTML = (
-                '<span>' + page + ' of ' + data.pages + '</span>'
-            )
-        }
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-            // autocomplete - vendors
-            var elems = document.querySelectorAll('#vendor-location');
-            var instances = M.Autocomplete.init(elems, {
-                data: {
-                    "Marshals place": null,
-                    "Cedar Mall": null,
-                    "Courtyard": null,
-                    "New Market": null,
-                    "Nanyuki": null,
-                    "Nyahururu": null,
-                    "Ngei Estate": null
-                },
-                onAutocomplete: filterVendorLocation
-            });
-
-            fetchVendors();
+      document.addEventListener("DOMContentLoaded", function() {
+        // autocomplete - vendors
+        var elems = document.querySelectorAll("#vendor-location");
+        var instances = M.Autocomplete.init(elems, {
+          data: {
+            "Marshals place": null,
+            "Cedar Mall": null,
+            Courtyard: null,
+            "New Market": null,
+            Nanyuki: null,
+            Nyahururu: null,
+            "Ngei Estate": null
+          },
+          onAutocomplete: filterVendorLocation
         });
-    </script>
-</body>
 
+        fetchVendors();
+        fetchCategories();
+      });
+    </script>
+  </body>
 </html>

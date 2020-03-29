@@ -116,7 +116,7 @@
         </div> -->
 
         <!-- Start of Card Item-->
-        <div class="card-item">
+        <!-- <div class="card-item">
             <div class="card-top">
                 <div class="card-top-left">
                     <span class="card-titled">Kisumu Dala Fish joint</span>
@@ -148,7 +148,7 @@
                 ut aliquip ex ea commodo consequat. Duis aute irure dolor in
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla.
             </p>
-        </div>
+        </div> -->
         <!-- End of Card Item-->
 
         <!-- The list of vendors is rendered inside the div below -->
@@ -214,35 +214,33 @@
         const displayVendors = (vendors) => {
 
             const vendorsDisplay = vendors.map(vendor => (
-                '<a href="tel:' + vendor.phone + '">' +
-                '<div class="card-panel vendor grey lighten-3 row">' +
-                '<div class="col s9 vendor-details">' +
-                '<div class="vendor-title grey-text text-darken-1">' +
-                '<i class="material-icons prefix">home</i> <span>' + vendor.shop +
-                '</span>' +
-                '</div>' +
-                '<div class="vendor-details">' +
-                '<div class="row">' +
-                '<div class="col s6 valign-wrapper">' +
-                '<i class="material-icons prefix">apps</i>' +
-                '<span>' + vendor.category + '</span>' +
-                '</div>' +
-                '<div class="col s6 valign-wrapper">' +
-                '<i class="material-icons prefix">phone</i> <span>' + vendor.phone +
-                '</span>' +
-                '</div>' +
-                '<div class="col s12 valign-wrapper">' +
-                '<i class="material-icons prefix">location_on</i> <span>' + vendor
-                .location + '</span>' +
+                console.log(vendor),
+                '<div class="card-item">' +
+                '<div class="card-top">' +
+                '<div class="card-top-left">' +
+                '<span class="card-titled">' + vendor.shop + '</span>' +
+                '<div class="phone-wrapper">' +
+                ' <i class="material-icons prefix">phone</i>' +
+                '<div class="phones">' +
+                '<a href="tel:' + vendor.phone + '" class="phone">' + vendor.phone + '</a>' +
                 '</div>' +
                 '</div>' +
+                ' </div>' +
+                '<div class="card-icon">' +
+                '<img class="responsive-img" src="/img/food.svg" alt="Food and Drugs">' +
                 '</div>' +
-                '</div>' +
-                '<div class="col s3">' +
-                '<img src="/img/vendor.png" class="responsive-img" alt="vendor thumb">' +
-                '</div>' +
-                '</div>' +
-                '</a>'
+                ' </div>' +
+
+                '  <div class="location">' +
+                ' <i class="material-icons prefix">location_on</i>' +
+                ' <span>' +
+                ' ' + vendor.location + '' +
+                ' </span>' +
+                ' </div>' +
+                '<p class="description">' +
+                '' + vendor.category + '' +
+                ' </p>' +
+                '</div>'
             ));
 
             document.getElementById("vendors").innerHTML = vendorsDisplay;

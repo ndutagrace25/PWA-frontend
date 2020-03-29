@@ -65,28 +65,21 @@
         </div>
         <!-- End of Search Wrapper-->
 
-        <!-- Start of Categories Wrapper-->
-        <div class="categories-wrapper">
-            <div class="categories-list">
-                <a href="javascript:void(0)" class="category-item active">
-                    <img class="responsive-img category-icon" src="/img/food.svg" alt="Food and Drugs">
-                    <div>Food & Drugs</div>
-                </a>
-                <a href="javascript:void(0)" class="category-item">
-                    <img class="responsive-img category-icon" src="/img/shop.svg" alt="Shopping">
-                    <div>Shops</div>
-                </a>
-                <a href="javascript:void(0)" class="category-item">
-                    <img class="responsive-img category-icon" src="/img/service.svg" alt="Offer services">
-                    <div>Services</div>
-                </a>
-                <a href="javascript:void(0)" class="category-item">
-                    <img class="responsive-img category-icon" src="/img/other-supplies.svg" alt="Other Supplies">
-                    <div>Other Supplies</div>
-                </a>
-            </div>
+        <!-- Start of Categories Dropdown select -->
+        <div class="input-field select-field">
+            <select class="icons">
+                <option value="" disabled selected>Select a category</option>
+                <option value="" data-icon="/img/food.svg">Eateries</option>
+                <option value="" data-icon="/img/motorcycle.png">Butcheries</option>
+                <option value="" data-icon="/img/service.svg">Groceries</option>
+                <option value="" data-icon="/img/other-supplies.svg">Shops</option>
+                <option value="" data-icon="/img/other-supplies.svg">Pharmaceuticals</option>
+                <option value="" data-icon="/img/other-supplies.svg">Gas</option>
+                <option value="" data-icon="/img/other-supplies.svg">Services</option>
+                <option value="" data-icon="/img/other-supplies.svg">Wines & Spirits</option>
+            </select>
         </div>
-        <!-- End of Categories Wrapper-->
+        <!-- Start of Categories Dropdown select -->
 
         <!-- <div class="row center categories">
             <div class="col s4">
@@ -171,6 +164,15 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script type="text/javascript" src="/js/materialize.min.js"></script>
     <script type="text/javascript" src="/js/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var elems = document.querySelectorAll('select');
+            var options = {
+                classes: "filter-wrapper"
+            }
+            var instances = M.FormSelect.init(elems, options);
+        });
+    </script>
     <script>
         let vendorCategory = 0;
 

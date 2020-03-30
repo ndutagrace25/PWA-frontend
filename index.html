@@ -298,7 +298,12 @@
                 "</div>"
             );
 
-            document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
+            if (vendorsDisplay.length > 0) {
+                document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
+            } else {
+                document.getElementById("vendors").innerHTML = '<div>No records found</div>';
+            }
+
             document.getElementById("paginationCount").innerHTML =
                 "<span>" + page + " of " + data.pages + "</span>";
         };

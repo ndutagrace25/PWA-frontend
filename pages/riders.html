@@ -210,8 +210,6 @@
                 displayRiders(filteredRiders);
             }
 
-
-
         };
 
         const filterRiderLocation = () => {
@@ -261,9 +259,14 @@
                 "</div>"
             ));
 
+            if (ridersDisplay.length > 0) {
+                document.getElementById("riders").innerHTML = ridersDisplay.join("");
 
+            } else {
+                document.getElementById("riders").innerHTML = '<div>No records found</div>';
 
-            document.getElementById("riders").innerHTML = ridersDisplay.join("");
+            }
+
             document.getElementById("paginationCountRider").innerHTML =
                 "<span>" + page + " of " + data.pages + "</span>";
         }

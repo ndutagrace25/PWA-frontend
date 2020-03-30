@@ -70,7 +70,6 @@
             </select>
         </div>
 
-
         <!-- The list of vendors is rendered inside the div below -->
         <div id="vendors"></div>
 
@@ -113,7 +112,7 @@
         let name = "";
 
         const fetchVendors = () => {
-            let url = `http://localhost:5001/vendors`;
+            let url = base_url + "vendors";
 
             if (filteredLocation !== "") {
                 url += `?location=${filteredLocation}`;
@@ -137,7 +136,7 @@
 
         const fetchCategories = () => {
             axios
-                .get("http://localhost:5001/category")
+                .get(base_url + "category")
                 .then(response => {
                     allCategories = response.data;
                     displayCategories(allCategories);
@@ -185,7 +184,6 @@
         };
 
         const filterVendorCategory = () => {
-
             vendorCategory = parseInt(
                 document.getElementById("selectCategory").value
             );
@@ -250,7 +248,9 @@
                 " </div>" +
                 " </div>" +
                 '<div class="card-icon">' +
-                '<img class="responsive-img" src="/img/' + vendor.category + '.svg" alt="Food and Drugs">' +
+                '<img class="responsive-img" src="/img/' +
+                vendor.category +
+                '.svg" alt="Food and Drugs">' +
                 "</div>" +
                 " </div>" +
                 "</div>"
@@ -266,9 +266,8 @@
                 cat => "<option value=" + cat.id + ">" + cat.name + "</option>"
             );
             document.getElementById("selectCategory").innerHTML =
-                '<option value="" disabled selected>Select a category</option>' + categories.join(
-                    ""
-                );
+                '<option value="" disabled selected>Select a category</option>' +
+                categories.join("");
         };
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -278,10 +277,10 @@
                 data: {
                     "Marshals place": null,
                     "Cedar Mall": null,
-                    Courtyard: null,
+                    "Courtyard": null,
                     "New Market": null,
-                    "Nanyuki town": null,
-                    Nyahururu: null,
+                    "Nanyuki Town": null,
+                    "Nyahururu": null,
                     "Ngei Estate": null
                 },
                 onAutocomplete: filterVendorLocation

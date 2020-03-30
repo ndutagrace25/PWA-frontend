@@ -199,12 +199,22 @@
             vendorCategory = parseInt(
                 document.getElementById("selectCategory").value
             );
+            const location = document.getElementById("vendor-location").value;
 
-            const filteredVendors = allVendors.filter(
-                vendor => vendor.category_id === vendorCategory
-            );
 
-            displayVendors(filteredVendors);
+            if (location === '') {
+                const filteredVendors = allVendors.filter(
+                    vendor => vendor.category_id === vendorCategory
+                );
+                displayVendors(filteredVendors);
+
+            } else {
+                const filteredVendors = allVendors.filter(
+                    vendor => vendor.category_id === vendorCategory && vendor.location === location
+                );
+                displayVendors(filteredVendors);
+            }
+
         };
 
         const filterVendorLocation = () => {

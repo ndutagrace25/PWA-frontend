@@ -242,11 +242,6 @@
                 "</a>" +
                 "</div>" +
                 "</div>" +
-                " </div>" +
-                '<div class="card-icon">' +
-                '<img class="responsive-img" src="/img/' + rider.category_name + '.svg" alt="Boda Boda">' +
-                "</div>" +
-                " </div>" +
                 '  <div class="location">' +
                 ' <i class="material-icons prefix">location_on</i>' +
                 " <span>" +
@@ -255,7 +250,11 @@
                 "" +
                 " </span>" +
                 " </div>" +
-                '<p class="description">' +
+                " </div>" +
+                '<div class="card-icon">' +
+                '<img class="responsive-img" src="/img/' + rider.category_name + '.svg" alt="Boda Boda">' +
+                "</div>" +
+                " </div>" +              
                 "</div>"
             ));
 
@@ -263,7 +262,7 @@
                 document.getElementById("riders").innerHTML = ridersDisplay.join("");
 
             } else {
-                document.getElementById("riders").innerHTML = '<div>No records found</div>';
+                document.getElementById("riders").innerHTML = '<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
 
             }
 

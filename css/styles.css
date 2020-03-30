@@ -234,11 +234,14 @@ a.phone {
 .card-icon {
     display: flex;
     margin-left: auto;
-    width: 20%;
+    width: 80px;
+    min-width: 40px !important;
+    height: min-content !important;
 }
 
 .card-icon img {
     width: 100%;
+    height: auto;
 }
 
 .location {
@@ -296,4 +299,25 @@ p.description {
 /* vendor styles */
 .vendors {
     margin-top: 0px;
+}
+
+.no-results {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem !important;
+    /* width: 50% !important; */
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.no-results img {
+    width: 200px !important;
+    max-width: 240px !important;
+}
+
+.no-results p {
+    color: var(--secondary);
+    font-size: 1.2rem;
+    text-align: center !important;
 }

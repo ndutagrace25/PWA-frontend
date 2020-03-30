@@ -301,7 +301,7 @@
             if (vendorsDisplay.length > 0) {
                 document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
             } else {
-                document.getElementById("vendors").innerHTML = '<div>No records found</div>';
+                document.getElementById("vendors").innerHTML = '<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
             }
 
             document.getElementById("paginationCount").innerHTML =

@@ -216,11 +216,23 @@
                 document.getElementById("selectCategory").value
             );
 
-            const filteredRiders = allRiders.filter(
-                vendor => vendor.category_id === riderCategory
-            );
+            const location = document.getElementById("rider-location").value;
 
-            displayRiders(filteredRiders);
+            if (location === '') {
+                const filteredRiders = allRiders.filter(
+                    rider => rider.category_id === riderCategory
+                );
+                displayRiders(filteredRiders);
+
+            } else {
+                const filteredRiders = allRiders.filter(
+                    rider => rider.category_id === riderCategory && rider.location === location
+                );
+                displayRiders(filteredRiders);
+            }
+
+
+
         };
 
         const filterRiderLocation = () => {
@@ -235,7 +247,6 @@
         const displayRiders = (riders) => {
             const page = curentPage;
             const data = pagination(riders, page, itemPerPage);
-            console.log(data);
 
             const ridersDisplay = data.querySet.map(rider => (
                 '<div class="card-item">' +
@@ -294,7 +305,7 @@
             var elems = document.querySelectorAll('#rider-location');
             var instances = M.Autocomplete.init(elems, {
                 data: {
-                    "Nanyuki": null,
+                    "Nanyuki Town": null,
                     "Doldol": null,
                     "Nyahururu": null,
                     "Marshals place": null,

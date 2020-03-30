@@ -71,10 +71,21 @@ nav .sidenav-trigger {
 
 select.browser-default {
     width: 100%;
+    border: 0 !important;
+    border-bottom: 1px solid #9e9e9e !important;
+    color: #000000 !important;
+}
+
+select.browser-default:focus {
+    outline: none !important;
+    border-bottom: 2px solid var(--primary) !important;
+    /* border: 1px solid var(--primary) !important; */
+    color: var(--primary) !important;
 }
 
 select.browser-default option {
     color: #4db6ac !important;
+    font-weight: 400 !important;
 }
 
 .input-field .label-select {
@@ -86,7 +97,10 @@ select.browser-default option {
     font-size: 2rem;
 }
 
-/* .input-field .prefix.active { color: var(--primary) !important; } */
+.input-field .prefix.active {
+    color: var(--primary) !important;
+}
+
 .input-field .prefix~input {
     margin-left: 2.4rem;
 }
@@ -95,7 +109,14 @@ input[type=text]:not(.browser-default) {
     height: 2.8rem;
 }
 
-/* input[type=text]:not(.browser-default):focus:not([readonly]) {border-bottom: 1px solid var(--primary); box-shadow: 0 1px 0 0 var(--primary);} */
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid var(--primary);
+    box-shadow: 0 1px 0 0 var(--primary);
+}
+
+/* .input-field ul.autocomplete-content li{
+    color: red !important;
+} */
 
 .material-icons {
     color: var(--secondary);
@@ -105,11 +126,11 @@ input[type=text]:not(.browser-default) {
     display: flex;
     margin-left: auto;
     margin-right: 15px;
-    color: var(--primary);
 }
 
 .reset-icon .material-icons {
-    color: #4db6ac !important;
+    color: var(--primary) !important;
+    /* color: #4db6ac !important; */
 }
 
 /* Onsare Categories */

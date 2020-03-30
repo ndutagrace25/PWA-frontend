@@ -55,7 +55,7 @@
             <div class="input-field">
                 <i class="material-icons prefix search-icon">search</i>
                 <input type="text" id="vendor-location" class="autocomplete" />
-                <label for="vendor-location">Search Vendor location</label>
+                <label for="vendor-location">Search vendor location</label>
             </div>
             <div class="reset-icon">
                 <a href="/"><i class="material-icons">autorenew</i></a>
@@ -146,17 +146,24 @@
         };
 
         const pagination = (querySet, page, rows) => {
-            let trimStart = (page - 1) * rows;
-            let trimEnd = trimStart + rows;
+            if (querySet.length > 0) {
+                let trimStart = (page - 1) * rows;
+                let trimEnd = trimStart + rows;
 
-            let trimmedData = querySet.slice(trimStart, trimEnd);
+                let trimmedData = querySet.slice(trimStart, trimEnd);
 
-            pages = Math.ceil(querySet.length / rows);
+                pages = Math.ceil(querySet.length / rows);
 
-            return {
-                querySet: trimmedData,
-                pages: pages
-            };
+                return {
+                    querySet: trimmedData,
+                    pages: pages
+                };
+            } else {
+                return {
+                    querySet: [],
+                    pages: 0
+                };
+            }
         };
 
         const nextPage = () => {
@@ -240,12 +247,12 @@
                 vendor.location +
                 "" +
                 " </span>" +
-                " </div>" +               
+                " </div>" +
                 " </div>" +
                 '<div class="card-icon">' +
                 '<img class="responsive-img" src="/img/' + vendor.category + '.svg" alt="Food and Drugs">' +
-                "</div>" +               
-                " </div>" +          
+                "</div>" +
+                " </div>" +
                 "</div>"
             );
 

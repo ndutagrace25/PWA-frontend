@@ -125,7 +125,7 @@
                 <i class="material-icons prefix">navigate_next</i>
             </a>
         </div>
-        <!-- End of Pagination-->
+        <!-- End of Paginations-->
     </div>
 
     <!--JavaScript at end of body for optimized loading-->
@@ -223,6 +223,7 @@
         const displayRiders = (riders) => {
             const page = curentPage;
             const data = pagination(riders, page, itemPerPage);
+            console.log(data);
 
             const ridersDisplay = data.querySet.map(rider => (
                 '<div class="card-item">' +
@@ -243,7 +244,7 @@
                 "</div>" +
                 " </div>" +
                 '<div class="card-icon">' +
-                '<img class="responsive-img" src="/img/Boda Boda.svg" alt="Boda Boda">' +
+                '<img class="responsive-img" src=""/img/' + rider.category_name + '.svg" alt="Boda Boda">' +
                 "</div>" +
                 " </div>" +
                 '  <div class="location">' +
@@ -258,7 +259,7 @@
                 "</div>"
             ));
 
-            document.getElementById("riders").innerHTML = ridersDisplay;
+            document.getElementById("riders").innerHTML = ridersDisplay.join("");
             document.getElementById("paginationCountRider").innerHTML =
                 "<span>" + page + " of " + data.pages + "</span>";
         }

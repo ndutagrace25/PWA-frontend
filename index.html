@@ -116,6 +116,7 @@
 
         let allVendors;
         let allCategories;
+        let allLocations = {};
         let itemPerPage = 10;
         let curentPage = 0;
         let pages;
@@ -152,6 +153,25 @@
                 .then(response => {
                     allCategories = response.data;
                     displayCategories(allCategories);
+                })
+                .catch(error => console.error(error));
+        };
+
+        const fetchLocations = () => {
+            var elems = document.querySelectorAll("#vendor-location");
+
+            axios
+                .get(base_url + "location")
+                .then(response => {
+                    response.data.map(location => {
+                        allLocations[location.name] = null
+                    })
+
+                    var instances = M.Autocomplete.init(elems, {
+                        data: allLocations,
+                        onAutocomplete: filterVendorLocation
+                    });
+
                 })
                 .catch(error => console.error(error));
         };
@@ -278,7 +298,12 @@
                 "</div>"
             );
 
-            document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
+            if (vendorsDisplay.length > 0) {
+                document.getElementById("vendors").innerHTML = vendorsDisplay.join("");
+            } else {
+                document.getElementById("vendors").innerHTML = '<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
+            }
+
             document.getElementById("paginationCount").innerHTML =
                 "<span>" + page + " of " + data.pages + "</span>";
         };
@@ -292,24 +317,13 @@
                 categories.join("");
         };
 
+
         document.addEventListener("DOMContentLoaded", function () {
             // autocomplete - vendors
-            var elems = document.querySelectorAll("#vendor-location");
-            var instances = M.Autocomplete.init(elems, {
-                data: {
-                    "Marshals place": null,
-                    "Cedar Mall": null,
-                    "Courtyard": null,
-                    "New Market": null,
-                    "Nanyuki Town": null,
-                    "Nyahururu": null,
-                    "Ngei Estate": null
-                },
-                onAutocomplete: filterVendorLocation
-            });
-
             fetchVendors();
             fetchCategories();
+            fetchLocations();
+
         });
     </script>
 </body>

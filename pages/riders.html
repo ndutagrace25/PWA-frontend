@@ -61,47 +61,6 @@
         </li>
     </ul>
 
-    <!-- Riders -->
-    <!-- <div class="vendors container grey-text text-darken-1">
-        <h5 class="center">Riders</h5>
-
-        <div class="row" style="margin-bottom: 0;">
-            <div class="input-field col s12">
-                <i class="material-icons prefix">location_on</i>
-                <input type="text" id="rider-location" class="autocomplete" />
-                <label for="rider-location">Search Rider Location</label>
-            </div>
-        </div>
-
-        <div class="row" style="margin-bottom: 0;">
-            <div class="col s12">
-                <div class="center">
-                    <a href="/pages/riders.html"><i class="material-icons prefix">autorenew</i></a>
-                </div>
-            </div>
-        </div>
-
-        <ul class="collection" id="riders"> -->
-    <!-- <li class="collection-item">
-                <div class="row motorcycle">
-                    <div class="col s9">
-                        <h6 class="teal-text text-darken-1">Njenga</h6>
-                        <div>
-                            <i class="material-icons prefix">location_on</i> <span>Nanyuki town</span>
-                        </div>
-                        <div>
-                            <i class="material-icons prefix">phone</i> <span>0700000000</span>
-                        </div>
-                    </div>
-
-                    <div class="col 3 motorcycle-image">
-                        <img src="/img/motorcycle.png" class="responsive-img" alt="motorcycle thumb">
-                    </div>
-                </div>
-            </li> -->
-    <!-- </ul>
-    </div> -->
-
     <div class="screen-wrapper">
         <!-- Start of Search Wrapper-->
         <div class="search-wrapper">
@@ -155,6 +114,7 @@
         let filteredLocation = "";
         let category = "";
         let name = "";
+        let allLocations = {};
 
         const fetchRiders = () => {
             axios.get(base_url + 'transport')
@@ -174,6 +134,25 @@
                 .then(response => {
                     allRiderCategories = response.data;
                     displayCategories(allRiderCategories);
+                })
+                .catch(error => console.error(error));
+        };
+
+        const fetchLocations = () => {
+            var elems = document.querySelectorAll("#rider-location");
+
+            axios
+                .get(base_url + "location")
+                .then(response => {
+                    response.data.map(location => {
+                        allLocations[location.name] = null
+                    })
+
+                    var instances = M.Autocomplete.init(elems, {
+                        data: allLocations,
+                        onAutocomplete: filterRiderLocation
+                    });
+
                 })
                 .catch(error => console.error(error));
         };
@@ -231,8 +210,6 @@
                 displayRiders(filteredRiders);
             }
 
-
-
         };
 
         const filterRiderLocation = () => {
@@ -277,13 +254,18 @@
                 '<div class="card-icon">' +
                 '<img class="responsive-img" src="/img/' + rider.category_name + '.svg" alt="Boda Boda">' +
                 "</div>" +
-                " </div>" +
+                " </div>" +              
                 "</div>"
             ));
 
+            if (ridersDisplay.length > 0) {
+                document.getElementById("riders").innerHTML = ridersDisplay.join("");
 
+            } else {
+                document.getElementById("riders").innerHTML = '<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
 
-            document.getElementById("riders").innerHTML = ridersDisplay.join("");
+            }
+
             document.getElementById("paginationCountRider").innerHTML =
                 "<span>" + page + " of " + data.pages + "</span>";
         }
@@ -301,22 +283,9 @@
         document.addEventListener("DOMContentLoaded", function () {
 
             // autocomplete - riders
-            var elems = document.querySelectorAll('#rider-location');
-            var instances = M.Autocomplete.init(elems, {
-                data: {
-                    "Nanyuki Town": null,
-                    "Doldol": null,
-                    "Nyahururu": null,
-                    "Marshals place": null,
-                    "Cedar Mall": null,
-                    Courtyard: null,
-                    "Ngei Estate": null
-                },
-                onAutocomplete: filterRiderLocation
-            });
-
             fetchRiders();
             fetchCategories();
+            fetchLocations();
         });
     </script>
 </body>

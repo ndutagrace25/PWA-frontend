@@ -207,8 +207,21 @@ a.category-item.active {
 .card-titled {
     color: #546E7A;
     font-size: 18px;
+    line-height: 20px;
     font-weight: 500 !important;
     margin-bottom: 0 !important;
+}
+
+.merchant {
+    color: #546E7A;
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: 500 !important;
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
 }
 
 .phone-wrapper {
@@ -256,12 +269,22 @@ a.phone {
     color: #AAAAAA;
     font-size: 14px;
     margin-left: 15px;
-    line-height: 26px;
+    line-height: 18px;
 }
 
 p.description {
     margin-bottom: 0 !important;
     margin-top: 0 !important;
+}
+
+p.description span {
+    line-height: 14px !important;
+}
+
+p.description span.till {
+    font-weight: 600;
+    letter-spacing: .2rem;
+    color: #2196f3;
 }
 
 /* End of Onsare Vendor and Rider card design */

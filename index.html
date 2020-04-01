@@ -77,7 +77,7 @@
 
     <!-- Start of Search by name Wrapper-->
     <div class="search-wrapper">
-      <div class="input-field">
+      <div class="input-field" style="width: 100% !important; margin-right: 15px !important;">
         <i class="material-icons prefix search-icon">search</i>
         <input type="text" id="vendor-name" class="autocomplete" />
         <label for="vendor-name">Search vendor name</label>
@@ -91,6 +91,41 @@
         <option value="" disabled selected>Select a category</option>
       </select>
     </div>
+
+    <!-- Start of Card Item-->
+    <div class="card-item">
+      <div class="card-top">
+        <div class="card-top-left">
+          <span class="merchant">
+            <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
+              src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">
+            Kisumu Dala Fish joint for fish all needs agro</span>
+          <div class="phone-wrapper">
+            <i class="material-icons prefix">phone</i>
+            <div class="phones">
+              <a href="tel:+254726202137" class="phone">0726302137</a>
+            </div>
+          </div>
+          <div class="location">
+            <i class="material-icons prefix">location_on</i>
+            <span>
+              Ponawa South, Tijaga
+            </span>
+          </div>
+        </div>
+        <div class="card-icon">
+          <img class="responsive-img" src="/img/Eateries.svg" alt="Food and Drugs">
+        </div>
+      </div>
+      <p class="description">
+        <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via
+          Mpesa:</span><br>
+        1. Use Till Number <span class="till">5039633</span><br>
+        2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000
+        or 2000)
+      </p>
+    </div>
+    <!-- End of Card Item-->
 
     <!-- The list of vendors is rendered inside the div below -->
     <div id="vendors"></div>

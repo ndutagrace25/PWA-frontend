@@ -1,4 +1,6 @@
 const base_url = "https://destination-backend.mawingunetworks.com/";
+// const base_url = "http://localhost:5001/";
+
 
 // Service worker registration
 if ("serviceWorker" in navigator) {

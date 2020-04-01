@@ -62,7 +62,7 @@
 
   <!-- Vendors Screen Wrapper-->
   <div class="screen-wrapper">
-    <!-- Start of Search Wrapper-->
+    <!-- Start of Search by location Wrapper-->
     <div class="search-wrapper">
       <div class="input-field">
         <i class="material-icons prefix search-icon">search</i>
@@ -73,7 +73,17 @@
         <a href="/"><i class="material-icons">autorenew</i></a>
       </div>
     </div>
-    <!-- End of Search Wrapper-->
+    <!-- End of Search by location Wrapper-->
+
+    <!-- Start of Search by name Wrapper-->
+    <div class="search-wrapper">
+      <div class="input-field" style="width: 100% !important; margin-right: 15px !important;">
+        <i class="material-icons prefix search-icon">search</i>
+        <input type="text" id="vendor-name" class="autocomplete" />
+        <label for="vendor-name">Search vendor name</label>
+      </div>
+    </div>
+    <!-- End of Search by nameWrapper-->
 
     <!-- Start of Categories Dropdown select -->
     <div class="input-field select-field">
@@ -81,6 +91,41 @@
         <option value="" disabled selected>Select a category</option>
       </select>
     </div>
+
+    <!-- Start of Card of Mawingu Marchant Item-->
+    <!-- <div class="card-item">
+      <div class="card-top">
+        <div class="card-top-left">
+          <span class="merchant">
+            <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
+              src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">
+            Kisumu Dala Fish joint for fish all needs agro</span>
+          <div class="phone-wrapper">
+            <i class="material-icons prefix">phone</i>
+            <div class="phones">
+              <a href="tel:+254726202137" class="phone">0726302137</a>
+            </div>
+          </div>
+          <div class="location">
+            <i class="material-icons prefix">location_on</i>
+            <span>
+              Ponawa South, Tijaga
+            </span>
+          </div>
+        </div>
+        <div class="card-icon">
+          <img class="responsive-img" src="/img/Eateries.svg" alt="Food and Drugs">
+        </div>
+      </div>
+      <p class="description">
+        <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via
+          Mpesa:</span><br>
+        1. Use Till Number <span class="till">5039633</span><br>
+        2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000
+        or 2000)
+      </p>
+    </div> -->
+    <!-- End of Card Item-->
 
     <!-- The list of vendors is rendered inside the div below -->
     <div id="vendors"></div>
@@ -117,30 +162,34 @@
     let allVendors;
     let allCategories;
     let allLocations = {};
+    let allVendorNames = {};
     let itemPerPage = 10;
     let curentPage = 0;
     let pages;
     let filteredLocation = "";
     let category = "";
     let name = "";
+    let pageVendors;
 
     const fetchVendors = () => {
+      var elems = document.querySelectorAll("#vendor-name");
       let url = base_url + "vendors";
 
-      if (filteredLocation !== "") {
-        url += `?location=${filteredLocation}`;
-      }
-      if (category !== "") {
-        url += `?category=${category}`;
-      }
-
-      if (name !== "") {
-        url += `&name=${name}`;
-      }
       axios
         .get(url)
         .then(response => {
+
+          response.data.map(vendor => {
+            allVendorNames[vendor.name] = null;
+          });
+
+          var instances = M.Autocomplete.init(elems, {
+            data: allVendorNames,
+            onAutocomplete: filterVendorName
+          });
+
           allVendors = response.data;
+          pageVendors = allVendors;
           nextPage();
         })
         .catch(error => console.error(error));
@@ -201,7 +250,7 @@
       } else {
         curentPage++;
       }
-      displayVendors(allVendors);
+      displayVendors(pageVendors);
     };
 
     const previousPage = () => {
@@ -210,7 +259,7 @@
       } else {
         curentPage--;
       }
-      displayVendors(allVendors);
+      displayVendors(pageVendors);
     };
 
     const filterVendorCategory = () => {
@@ -218,22 +267,36 @@
         document.getElementById("selectCategory").value
       );
       const location = document.getElementById("vendor-location").value;
+      const name = document.getElementById("vendor-name").value;
+      console.log(name.length);
 
       if (location === "") {
         const filteredVendors = allVendors.filter(
           vendor => vendor.category_id === vendorCategory
         );
-        allVendors = filteredVendors;
-        displayVendors(allVendors);
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       } else {
         const filteredVendors = allVendors.filter(
           vendor =>
           vendor.category_id === vendorCategory &&
           vendor.location === location
         );
-        allVendors = filteredVendors;
-        displayVendors(allVendors);
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       }
+
+      if (name.length > 0) {
+        console.log('its getting here');
+        const filteredVendors = allVendors.filter(
+          vendor =>
+          vendor.category_id === vendorCategory &&
+          vendor.name === name
+        );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
+      }
+
     };
 
     const filterVendorLocation = () => {
@@ -249,17 +312,38 @@
         filteredVendors = allVendors.filter(
           vendor => vendor.category_id === vendorCategory
         );
-        filteredVendors = filteredVendors.filter(
+
+        filteredVendors = allVendors.filter(
           vendor => vendor.location === location
         );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       } else {
         filteredVendors = allVendors.filter(
           vendor => vendor.location === location
         );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       }
-
-      displayVendors(filteredVendors);
     };
+
+    const filterVendorName = () => {
+      const location = document.getElementById("vendor-location").value;
+      const name = document.getElementById("vendor-name").value;
+
+      if (location === "") {
+        const filteredVendors = allVendors.filter(
+          vendor => vendor.name === name
+        );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
+      } else {
+        let filteredRiders = allVendors.filter(vendor => vendor.name === name && vendor.location === location);
+
+        pageVendors = filteredRiders;
+        displayVendors(pageVendors);
+      }
+    }
 
     const displayVendors = vendors => {
       const page = curentPage;

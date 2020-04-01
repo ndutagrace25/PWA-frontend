@@ -220,6 +220,7 @@
             );
 
             const location = document.getElementById("rider-location").value;
+            const name = document.getElementById("rider-name").value;
 
             if (location === '') {
                 const filteredRiders = allRiders.filter(
@@ -231,6 +232,16 @@
             } else {
                 const filteredRiders = allRiders.filter(
                     rider => rider.category_id === riderCategory && rider.location === location
+                );
+                pageRiders = filteredRiders;
+                displayRiders(pageRiders);
+            }
+
+            if (name.length > 0) {
+                const filteredRiders = allRiders.filter(
+                    rider =>
+                    rider.category_id === riderCategory &&
+                    rider.name === name
                 );
                 pageRiders = filteredRiders;
                 displayRiders(pageRiders);
@@ -249,13 +260,21 @@
         }
 
         const filterRiderName = () => {
-
+            const location = document.getElementById("rider-location").value;
             const name = document.getElementById("rider-name").value;
 
-            let filteredRiders = allRiders.filter(rider => rider.name === name);
+            if (location === "") {
+                let filteredRiders = allRiders.filter(rider => rider.name === name);
 
-            pageRiders = filteredRiders;
-            displayRiders(pageRiders);
+                pageRiders = filteredRiders;
+                displayRiders(pageRiders);
+            } else {
+                let filteredRiders = allRiders.filter(rider => rider.name === name && rider.location === location);
+
+                pageRiders = filteredRiders;
+                displayRiders(pageRiders);
+            }
+
         }
 
         const displayRiders = (riders) => {

@@ -62,7 +62,7 @@
 
   <!-- Vendors Screen Wrapper-->
   <div class="screen-wrapper">
-    <!-- Start of Search Wrapper-->
+    <!-- Start of Search by location Wrapper-->
     <div class="search-wrapper">
       <div class="input-field">
         <i class="material-icons prefix search-icon">search</i>
@@ -73,7 +73,17 @@
         <a href="/"><i class="material-icons">autorenew</i></a>
       </div>
     </div>
-    <!-- End of Search Wrapper-->
+    <!-- End of Search by location Wrapper-->
+
+    <!-- Start of Search by name Wrapper-->
+    <div class="search-wrapper">
+      <div class="input-field">
+        <i class="material-icons prefix search-icon">search</i>
+        <input type="text" id="vendor-name" class="autocomplete" />
+        <label for="vendor-name">Search vendor name</label>
+      </div>
+    </div>
+    <!-- End of Search by nameWrapper-->
 
     <!-- Start of Categories Dropdown select -->
     <div class="input-field select-field">
@@ -117,30 +127,34 @@
     let allVendors;
     let allCategories;
     let allLocations = {};
+    let allVendorNames = {};
     let itemPerPage = 10;
     let curentPage = 0;
     let pages;
     let filteredLocation = "";
     let category = "";
     let name = "";
+    let pageVendors;
 
     const fetchVendors = () => {
+      var elems = document.querySelectorAll("#vendor-name");
       let url = base_url + "vendors";
 
-      if (filteredLocation !== "") {
-        url += `?location=${filteredLocation}`;
-      }
-      if (category !== "") {
-        url += `?category=${category}`;
-      }
-
-      if (name !== "") {
-        url += `&name=${name}`;
-      }
       axios
         .get(url)
         .then(response => {
+
+          response.data.map(vendor => {
+            allVendorNames[vendor.name] = null;
+          });
+
+          var instances = M.Autocomplete.init(elems, {
+            data: allVendorNames,
+            onAutocomplete: filterVendorName
+          });
+
           allVendors = response.data;
+          pageVendors = allVendors;
           nextPage();
         })
         .catch(error => console.error(error));
@@ -201,7 +215,7 @@
       } else {
         curentPage++;
       }
-      displayVendors(allVendors);
+      displayVendors(pageVendors);
     };
 
     const previousPage = () => {
@@ -210,7 +224,7 @@
       } else {
         curentPage--;
       }
-      displayVendors(allVendors);
+      displayVendors(pageVendors);
     };
 
     const filterVendorCategory = () => {
@@ -218,22 +232,36 @@
         document.getElementById("selectCategory").value
       );
       const location = document.getElementById("vendor-location").value;
+      const name = document.getElementById("vendor-name").value;
+      console.log(name.length);
 
       if (location === "") {
         const filteredVendors = allVendors.filter(
           vendor => vendor.category_id === vendorCategory
         );
-        allVendors = filteredVendors;
-        displayVendors(allVendors);
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       } else {
         const filteredVendors = allVendors.filter(
           vendor =>
           vendor.category_id === vendorCategory &&
           vendor.location === location
         );
-        allVendors = filteredVendors;
-        displayVendors(allVendors);
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       }
+
+      if (name.length > 0) {
+        console.log('its getting here');
+        const filteredVendors = allVendors.filter(
+          vendor =>
+          vendor.category_id === vendorCategory &&
+          vendor.name === name
+        );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
+      }
+
     };
 
     const filterVendorLocation = () => {
@@ -249,17 +277,38 @@
         filteredVendors = allVendors.filter(
           vendor => vendor.category_id === vendorCategory
         );
-        filteredVendors = filteredVendors.filter(
+
+        filteredVendors = allVendors.filter(
           vendor => vendor.location === location
         );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       } else {
         filteredVendors = allVendors.filter(
           vendor => vendor.location === location
         );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
       }
-
-      displayVendors(filteredVendors);
     };
+
+    const filterVendorName = () => {
+      const location = document.getElementById("vendor-location").value;
+      const name = document.getElementById("vendor-name").value;
+
+      if (location === "") {
+        const filteredVendors = allVendors.filter(
+          vendor => vendor.name === name
+        );
+        pageVendors = filteredVendors;
+        displayVendors(pageVendors);
+      } else {
+        let filteredRiders = allVendors.filter(vendor => vendor.name === name && vendor.location === location);
+
+        pageVendors = filteredRiders;
+        displayVendors(pageVendors);
+      }
+    }
 
     const displayVendors = vendors => {
       const page = curentPage;

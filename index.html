@@ -351,7 +351,43 @@
       console.log(data.querySet);
 
       const vendorsDisplay = data.querySet.map(
+
         vendor =>
+        vendor.merchant_status === 1 ?
+        '<div class="card-item">' +
+        '<div class="card-top">' +
+        ' <div class="card-top-left">' +
+        ' <span class="merchant">' +
+        ' <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"' +
+        'src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">' +
+        vendor.shop +
+        ' </span>' +
+        '<div class="phone-wrapper">' +
+        ' <i class="material-icons prefix">phone</i>' +
+        '<div class="phones">' +
+        '<a href="tel:+254726202137" class="phone">' + vendor.phone + '</a>' +
+        ' </div>' +
+        '</div>' +
+        ' <div class="location">' +
+        '<i class="material-icons prefix">location_on</i>' +
+        '<span>' +
+        vendor.location +
+        '</span>' +
+        ' </div>' +
+        '</div>' +
+        '<div class="card-icon">' +
+        '<img class="responsive-img" src="/img/Eateries.svg" alt="Food and Drugs">' +
+        ' </div>' +
+        ' </div>' +
+        ' <p class="description">' +
+        ' <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via' +
+        '  Mpesa:</span><br>' +
+        ' 1. Use Till Number <span class="till">5039633</span><br>' +
+        '2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000' +
+        '  or 2000)' +
+        ' </p>' +
+        '  </div>'
+        :
         '<div class="card-item">' +
         '<div class="card-top">' +
         '<div class="card-top-left">' +

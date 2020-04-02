@@ -63,68 +63,64 @@
   <!-- Vendors Screen Wrapper-->
   <div class="screen-wrapper">
     <div class="fixed-action-btn">
-      <a class="btn-floating btn-large green">
-        <i class="large material-icons">more_horiz</i>
-      </a>
-      <ul>
-        <li><a class="btn-floating red" href="/"><i class="material-icons">autorenew</i></a></li>
-        <li><a class="btn-floating yellow darken-1" onclick="openSearch()"><i class="material-icons">search</i></a></li>
-        <li><a class="btn-floating blue" onclick="openDesc()"><i class="material-icons">cloud</i></a></li>
-      </ul>
+      <a class="btn-floating btn-large" onclick="openSearch()"><i class="material-icons">search</i></a>
     </div>
 
-    <!-- Start of Merchant Card Desc Item-->
-    <div class="card-item" id="merchant-desc" style="display: none;">
-      <div class="merchant-top">
-        <div class="merchant-top-left">
-          <span class="merchant">
-            <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
-              src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">
-            A Mawingu Merchant</span>
-
-        </div>
-        <div class="close-icon-merch">
-          <a onclick="closeDesc()"><i class="material-icons">close</i></a>
-        </div>
-      </div>
-      <p class="description">
-        <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via
-          Mpesa:</span><br>
-        1. Use Till Number <span class="till">5039633</span><br>
-        2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000
-        or 2000)
-      </p>
-    </div>
-    <!-- End of Merchant Card Desc Item-->
-
-    <div class="search-panel" id="search-panel">
+    <div class="modal-custom" id="modal-custom">
       <div class="close-icon">
         <a onclick="closeSearch()"><i class="material-icons">close</i></a>
       </div>
-      <!-- Start of Search by name Wrapper-->
-      <div class="search-wrapper">
-        <div class="input-field">
-          <input type="text" id="vendor-name" class="autocomplete" />
-          <label for="vendor-name">Search vendor name</label>
-        </div>
+      <!-- Start of Merchant Card Desc Item-->
+      <div class="card-item" id="merchant-desc">
+        <div class="merchant-top">
+          <div class="merchant-top-left">
+            <span class="merchant">
+              <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
+                src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">
+              A Mawingu Merchant</span>
 
+          </div>
+          <!-- <div class="close-icon-merch">
+            <a onclick="closeDesc()"><i class="material-icons">close</i></a>
+          </div> -->
+        </div>
+        <p class="description">
+          <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via
+            Mpesa:</span><br>
+          1. Use Till Number <span class="till">5039633</span><br>
+          2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000
+          or 2000)
+        </p>
       </div>
-      <!-- End of Search by nameWrapper-->
-      <!-- Start of Search by location Wrapper-->
-      <div class="search-wrapper">
-        <div class="input-field">
-          <input type="text" id="vendor-location" class="autocomplete" />
-          <label for="vendor-location">Search vendor location</label>
+      <!-- End of Merchant Card Desc Item-->
+
+      <div class="search-panel">
+        <!-- Start of Search by name Wrapper-->
+        <div class="search-wrapper">
+          <div class="input-field" style="width: 80% !important;">
+            <input type="text" id="vendor-name" class="autocomplete" />
+            <label for="vendor-name">Search vendor name</label>
+          </div>
+          <a class="reset-icon" href="/"><i class="material-icons">autorenew</i></a>
+        </div>
+        <!-- End of Search by nameWrapper-->
+        <!-- Start of Search by location Wrapper-->
+        <div class="search-wrapper">
+          <div class="input-field">
+            <input type="text" id="vendor-location" class="autocomplete" />
+            <label for="vendor-location">Search vendor location</label>
+          </div>
+        </div>
+        <!-- End of Search by location Wrapper-->
+
+        <!-- Start of Categories Dropdown select -->
+        <div class="input-field select-field">
+          <select class="browser-default" id="selectCategory" onchange="filterVendorCategory()">
+            <option value="" disabled selected>Select a category</option>
+          </select>
         </div>
       </div>
-      <!-- End of Search by location Wrapper-->
 
-      <!-- Start of Categories Dropdown select -->
-      <div class="input-field select-field">
-        <select class="browser-default" id="selectCategory" onchange="filterVendorCategory()">
-          <option value="" disabled selected>Select a category</option>
-        </select>
-      </div>
     </div>
 
     <!-- The list of vendors is rendered inside the div below -->

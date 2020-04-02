@@ -43,11 +43,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function openSearch() {
-  document.getElementById('search-panel').style.display = 'block';
+  document.getElementById('modal-custom').style.display = 'block';
 }
 
 function closeSearch() {
-  document.getElementById('search-panel').style.display = 'none';
+  document.getElementById('modal-custom').style.display = 'none';
 }
 
 function openDesc() {

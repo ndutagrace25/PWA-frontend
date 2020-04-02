@@ -38,7 +38,7 @@ nav .sidenav-trigger {
 
 .screen-wrapper {
     width: 100%;
-    padding-bottom: 40px;
+    padding-bottom: 84px !important;
     padding-top: 10px;
 }
 
@@ -377,4 +377,18 @@ p.description span.till {
 .fixed-action-btn {
     bottom: 50px !important;
     right: 15px !important;
+}
+
+.btn-large {
+    width: 44px !important;
+    height: 44px !important;
+    line-height: 44px;
+}
+
+.btn-floating.btn-large i {
+    line-height: 44px !important;
+}
+
+.fixed-action-btn ul {
+    bottom: 50px !important;
 }

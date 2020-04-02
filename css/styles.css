@@ -39,6 +39,7 @@ nav .sidenav-trigger {
 .screen-wrapper {
     width: 100%;
     padding-bottom: 40px;
+    padding-top: 10px;
 }
 
 .search-wrapper {
@@ -54,12 +55,13 @@ nav .sidenav-trigger {
 }
 
 .search-wrapper .input-field {
-    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
     margin-bottom: 0 !important;
+    width: 100% !important;
+    margin-right: 15px !important;
 }
 
 /* .filter-wrapper { margin-right: 15px !important; margin-left: 15px !important; } */
@@ -88,13 +90,14 @@ select.browser-default option {
     font-weight: 400 !important;
 }
 
-.input-field .label-select {
-    margin-left: 15px !important;
-}
 
 .search-icon {
     color: var(--secondary);
     font-size: 2rem;
+}
+
+.input-field label {
+    padding-left: 10px;
 }
 
 .input-field .prefix.active {
@@ -122,13 +125,15 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     color: var(--secondary);
 }
 
-.reset-icon {
+.close-icon {
     display: flex;
-    margin-left: auto;
-    margin-right: 15px;
+    justify-content: flex-end;
+    margin-right: 15px !important;
+    margin-top: -4px !important;
 }
 
-.reset-icon .material-icons {
+.close-icon .material-icons,
+.close-icon-merch .material-icons {
     color: var(--primary) !important;
     /* color: #4db6ac !important; */
 }
@@ -202,6 +207,26 @@ a.category-item.active {
     width: 80%;
     display: flex;
     flex-direction: column;
+}
+
+.merchant-top {
+    display: flex;
+    flex-wrap: nowrap !important;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.merchant-top-left {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-icon-merch {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 0 !important;
 }
 
 .card-titled {
@@ -343,4 +368,13 @@ p.description span.till {
     color: var(--secondary);
     font-size: 1.2rem;
     text-align: center !important;
+}
+
+.search-panel {
+    display: none;
+}
+
+.fixed-action-btn {
+    bottom: 50px !important;
+    right: 15px !important;
 }

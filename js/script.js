@@ -14,10 +14,46 @@ if ("serviceWorker" in navigator) {
     });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   // nav menu
   const menus = document.querySelectorAll(".side-menu");
   M.Sidenav.init(menus, {
     edge: "right"
   });
 });
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  var elems = document.querySelectorAll('.fixed-action-btn');
+  var options = {
+    direction: "top",
+    hoverEnabled: false,
+    toolbarEnabled: false
+  };
+  var instances = M.FloatingActionButton.init(elems, options);
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  var elems = document.querySelectorAll("select");
+  var options = {
+    classes: "filter-wrapper"
+  };
+  var instances = M.FormSelect.init(elems, options);
+});
+
+
+function openSearch() {
+  document.getElementById('search-panel').style.display = 'block';
+}
+
+function closeSearch() {
+  document.getElementById('search-panel').style.display = 'none';
+}
+
+function openDesc() {
+  document.getElementById('merchant-desc').style.display = 'block';
+}
+
+function closeDesc() {
+  document.getElementById('merchant-desc').style.display = 'none';
+}

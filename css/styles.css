@@ -137,6 +137,9 @@ input[type=text]:not(.browser-default):focus:not([readonly]) {
     margin-right: 15px !important;
 }
 
+.reload-icon {}
+
+.reload-icon .material-icons,
 .reset-icon .material-icons,
 .close-icon .material-icons,
 .close-icon-merch .material-icons {

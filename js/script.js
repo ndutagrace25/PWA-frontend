@@ -46,6 +46,7 @@ function openSearch() {
   document.getElementById('modal-custom').style.display = 'block';
 }
 
+
 function closeSearch() {
   document.getElementById('modal-custom').style.display = 'none';
 }

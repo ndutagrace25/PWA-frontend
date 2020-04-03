@@ -1,414 +1,398 @@
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Destination Laikipia</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Destination Laikipia</title>
+		<!--Import Google Icon Font-->
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<!--Import materialize.css-->
+		<link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
+		<link rel="stylesheet" href="/css/styles.css" />
+		<link rel="manifest" href="/manifest.json" />
+		<!-- ios support -->
+		<link rel="apple-touch-icon" href="/img/icons/icon-96x96.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-72x72.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-128x128.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-144x144.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-152x152.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-192x192.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-384x384.png" />
+		<link rel="apple-touch-icon" href="/img/icons/icon-512x512.png" />
+		<meta name="apple-mobile-web-app-status-bar" content="#00897b" />
+		<meta name="theme-color" content="#00897b" />
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-162170504-1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
 
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="/css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="manifest" href="/manifest.json" />
-  <!-- ios support -->
-  <link rel="apple-touch-icon" href="/img/icons/icon-96x96.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-72x72.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-128x128.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-144x144.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-152x152.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-192x192.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-384x384.png" />
-  <link rel="apple-touch-icon" href="/img/icons/icon-512x512.png" />
-  <meta name="apple-mobile-web-app-status-bar" content="#00897b" />
-  <meta name="theme-color" content="#00897b" />
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-162170504-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
 
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+			gtag('config', 'UA-162170504-1');
+		</script>
+	</head>
 
-    gtag("config", "UA-162170504-1");
-  </script>
-</head>
+	<body class="white">
+		<!-- Nav -->
+		<nav class="z-depth-0">
+			<div>
+				<a href="/">vendors</a>
+				<span class="right white-text">
+					<i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
+				</span>
+			</div>
+		</nav>
 
-<body class="white">
-  <!-- Nav -->
-  <nav class="z-depth-0">
-    <div>
-      <a href="/">vendors</a>
-      <span class="right white-text">
-        <i class="material-icons sidenav-trigger" data-target="side-menu">menu</i>
-      </span>
-    </div>
-  </nav>
+		<!-- Side menu -->
+		<ul id="side-menu" class="sidenav side-menu">
+			<li>
+				<a class="subheader">Destination Laikipia</a>
+			</li>
+			<li>
+				<a href="/" class="waves-effect">Vendors</a>
+			</li>
+			<li>
+				<a href="/pages/riders.html" class="waves-effect">Transport</a>
+			</li>
+		</ul>
 
-  <!-- Side menu -->
-  <ul id="side-menu" class="sidenav side-menu">
-    <li>
-      <a class="subheader">Destination Laikipia</a>
-    </li>
-    <li>
-      <a href="/" class="waves-effect">Vendors</a>
-    </li>
-    <li>
-      <a href="/pages/riders.html" class="waves-effect">Transport</a>
-    </li>
-  </ul>
+		<div style="display: flex; width: 100%; justify-content: center;">
+			<a class="reload-icon" href="/"><i class="material-icons">autorenew</i></a>
+		</div>
 
-  <!-- Vendors Screen Wrapper-->
-  <div class="screen-wrapper">
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large" onclick="openSearch()"><i class="material-icons">search</i></a>
-    </div>
+		<!-- Vendors Screen Wrapper-->
+		<div class="screen-wrapper">
+			<div class="fixed-action-btn">
+				<a class="btn-floating btn-large" onclick="openSearch()"><i class="material-icons">search</i></a>
+			</div>
 
-    <div class="modal-custom" id="modal-custom">
-      <div class="close-icon">
-        <a onclick="closeSearch()"><i class="material-icons">close</i></a>
-      </div>
-      <!-- Start of Merchant Card Desc Item-->
-      <div class="card-item" id="merchant-desc">
-        <div class="merchant-top">
-          <div class="merchant-top-left">
-            <span class="merchant">
-              <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
-                src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">
-              A Mawingu Merchant</span>
-
-          </div>
-          <!-- <div class="close-icon-merch">
+			<div class="modal-custom" id="modal-custom">
+				<div class="close-icon">
+					<a onclick="closeSearch()"><i class="material-icons">close</i></a>
+				</div>
+				<!-- Start of Merchant Card Desc Item-->
+				<div class="card-item" id="merchant-desc">
+					<div class="merchant-top">
+						<div class="merchant-top-left">
+							<span class="merchant">
+								<img
+									class="responsive-img"
+									style="width: 24px !important; margin-right: 10px !important;"
+									src="/img/mawingu-merchant-icon.svg"
+									alt="Mawingu Merchant>"
+								/>
+								A Mawingu Merchant</span
+							>
+						</div>
+						<!-- <div class="close-icon-merch">
             <a onclick="closeDesc()"><i class="material-icons">close</i></a>
           </div> -->
-        </div>
-        <p class="description">
-          <span> To purchase mawingu bundles at any Mawingu Wi-Fi zone via
-            Mpesa:</span><br>
-          1. Use Till Number <span class="till">5039633</span><br>
-          2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000
-          or 2000)
-        </p>
-      </div>
-      <!-- End of Merchant Card Desc Item-->
+					</div>
+					<p class="description">
+						<span> To purchase Mawingu bundles at any Mawingu Wi-Fi zone via Mpesa:</span><br />
+						1. Use Till Number <span class="till">5039633</span><br />
+						2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000 or 2000)
+					</p>
+				</div>
+				<!-- End of Merchant Card Desc Item-->
 
-      <div class="search-panel">
-        <!-- Start of Search by name Wrapper-->
-        <div class="search-wrapper">
-          <div class="input-field" style="width: 80% !important;">
-            <input type="text" id="vendor-name" class="autocomplete" />
-            <label for="vendor-name">Search vendor name</label>
-          </div>
-          <a class="reset-icon" href="/"><i class="material-icons">autorenew</i></a>
-        </div>
-        <!-- End of Search by nameWrapper-->
-        <!-- Start of Search by location Wrapper-->
-        <div class="search-wrapper">
-          <div class="input-field">
-            <input type="text" id="vendor-location" class="autocomplete" />
-            <label for="vendor-location">Search vendor location</label>
-          </div>
-        </div>
-        <!-- End of Search by location Wrapper-->
+				<div class="search-panel">
+					<!-- Start of Search by name Wrapper-->
+					<div class="search-wrapper">
+						<div class="input-field" style="width: 80% !important;">
+							<input type="text" id="vendor-name" class="autocomplete" />
+							<label for="vendor-name">Search vendor name</label>
+						</div>
+						<a class="reset-icon" href="/" onclick="openSearch()"><i class="material-icons">refresh</i></a>
+					</div>
+					<!-- End of Search by nameWrapper-->
+					<!-- Start of Search by location Wrapper-->
+					<div class="search-wrapper">
+						<div class="input-field">
+							<input type="text" id="vendor-location" class="autocomplete" />
+							<label for="vendor-location">Search vendor location</label>
+						</div>
+					</div>
+					<!-- End of Search by location Wrapper-->
 
-        <!-- Start of Categories Dropdown select -->
-        <div class="input-field select-field">
-          <select class="browser-default" id="selectCategory" onchange="filterVendorCategory()">
-            <option value="" disabled selected>Select a category</option>
-          </select>
-        </div>
-      </div>
+					<!-- Start of Categories Dropdown select -->
+					<div class="input-field select-field">
+						<select class="browser-default" id="selectCategory" onchange="filterVendorCategory()">
+							<option value="" disabled selected>Select a category</option>
+						</select>
+					</div>
+				</div>
+			</div>
 
-    </div>
+			<!-- The list of vendors is rendered inside the div below -->
+			<div id="vendors"></div>
+			<!-- Start of Pagination-->
+			<div class="paginate">
+				<a href="javascript:void(0)" onclick="previousPage()">
+					<i class="material-icons prefix">navigate_before</i>
+				</a>
+				<div id="paginationCount"></div>
+				<a href="javascript:void(0)" onclick="nextPage()">
+					<i class="material-icons prefix">navigate_next</i>
+				</a>
+			</div>
+			<!-- End of Pagination-->
+		</div>
 
-    <!-- The list of vendors is rendered inside the div below -->
-    <div id="vendors"></div>
-    <!-- Start of Pagination-->
-    <div class="paginate">
-      <a href="javascript:void(0)" onclick="previousPage()">
-        <i class="material-icons prefix">navigate_before</i>
-      </a>
-      <div id="paginationCount"></div>
-      <a href="javascript:void(0)" onclick="nextPage()">
-        <i class="material-icons prefix">navigate_next</i>
-      </a>
-    </div>
-    <!-- End of Pagination-->
-  </div>
+		<!--JavaScript at end of body for optimized loading-->
+		<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+		<script type="text/javascript" src="/js/materialize.min.js"></script>
+		<script type="text/javascript" src="/js/script.js"></script>
 
-  <!--JavaScript at end of body for optimized loading-->
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script type="text/javascript" src="/js/materialize.min.js"></script>
-  <script type="text/javascript" src="/js/script.js"></script>
+		<script>
+			let vendorCategory = 0;
 
-  <script>
-    let vendorCategory = 0;
+			let allVendors;
+			let allCategories;
+			let allLocations = {};
+			let allVendorNames = {};
+			let itemPerPage = 10;
+			let curentPage = 0;
+			let pages;
+			let filteredLocation = '';
+			let category = '';
+			let name = '';
+			let pageVendors;
 
-    let allVendors;
-    let allCategories;
-    let allLocations = {};
-    let allVendorNames = {};
-    let itemPerPage = 10;
-    let curentPage = 0;
-    let pages;
-    let filteredLocation = "";
-    let category = "";
-    let name = "";
-    let pageVendors;
+			const fetchVendors = () => {
+				var elems = document.querySelectorAll('#vendor-name');
+				let url = base_url + 'vendors';
 
-    const fetchVendors = () => {
-      var elems = document.querySelectorAll("#vendor-name");
-      let url = base_url + "vendors";
+				axios
+					.get(url)
+					.then(response => {
+						response.data.map(vendor => {
+							allVendorNames[vendor.name] = null;
+						});
 
-      axios
-        .get(url)
-        .then(response => {
-          response.data.map(vendor => {
-            allVendorNames[vendor.name] = null;
-          });
+						var instances = M.Autocomplete.init(elems, {
+							data: allVendorNames,
+							onAutocomplete: filterVendorName,
+						});
 
-          var instances = M.Autocomplete.init(elems, {
-            data: allVendorNames,
-            onAutocomplete: filterVendorName
-          });
+						allVendors = response.data;
+						pageVendors = allVendors;
+						nextPage();
+					})
+					.catch(error => console.error(error));
+			};
 
-          allVendors = response.data;
-          pageVendors = allVendors;
-          nextPage();
-        })
-        .catch(error => console.error(error));
-    };
+			const fetchCategories = () => {
+				axios
+					.get(base_url + 'category')
+					.then(response => {
+						allCategories = response.data;
+						displayCategories(allCategories);
+					})
+					.catch(error => console.error(error));
+			};
 
-    const fetchCategories = () => {
-      axios
-        .get(base_url + "category")
-        .then(response => {
-          allCategories = response.data;
-          displayCategories(allCategories);
-        })
-        .catch(error => console.error(error));
-    };
+			const fetchLocations = () => {
+				var elems = document.querySelectorAll('#vendor-location');
 
-    const fetchLocations = () => {
-      var elems = document.querySelectorAll("#vendor-location");
+				axios
+					.get(base_url + 'location')
+					.then(response => {
+						response.data.map(location => {
+							allLocations[location.name] = null;
+						});
 
-      axios
-        .get(base_url + "location")
-        .then(response => {
-          response.data.map(location => {
-            allLocations[location.name] = null;
-          });
+						var instances = M.Autocomplete.init(elems, {
+							data: allLocations,
+							onAutocomplete: filterVendorLocation,
+						});
+					})
+					.catch(error => console.error(error));
+			};
 
-          var instances = M.Autocomplete.init(elems, {
-            data: allLocations,
-            onAutocomplete: filterVendorLocation
-          });
-        })
-        .catch(error => console.error(error));
-    };
+			const pagination = (querySet, page, rows) => {
+				if (querySet.length > 0) {
+					let trimStart = (page - 1) * rows;
+					let trimEnd = trimStart + rows;
 
-    const pagination = (querySet, page, rows) => {
-      if (querySet.length > 0) {
-        let trimStart = (page - 1) * rows;
-        let trimEnd = trimStart + rows;
+					let trimmedData = querySet.slice(trimStart, trimEnd);
 
-        let trimmedData = querySet.slice(trimStart, trimEnd);
+					pages = Math.ceil(querySet.length / rows);
 
-        pages = Math.ceil(querySet.length / rows);
+					return {
+						querySet: trimmedData,
+						pages: pages,
+					};
+				} else {
+					return {
+						querySet: [],
+						pages: 0,
+					};
+				}
+			};
 
-        return {
-          querySet: trimmedData,
-          pages: pages
-        };
-      } else {
-        return {
-          querySet: [],
-          pages: 0
-        };
-      }
-    };
+			const nextPage = () => {
+				if (curentPage === pages) {
+					return curentPage;
+				} else {
+					curentPage++;
+				}
+				displayVendors(pageVendors);
+			};
 
-    const nextPage = () => {
-      if (curentPage === pages) {
-        return curentPage;
-      } else {
-        curentPage++;
-      }
-      displayVendors(pageVendors);
-    };
+			const previousPage = () => {
+				if (curentPage === 1) {
+					return curentPage;
+				} else {
+					curentPage--;
+				}
+				displayVendors(pageVendors);
+			};
 
-    const previousPage = () => {
-      if (curentPage === 1) {
-        return curentPage;
-      } else {
-        curentPage--;
-      }
-      displayVendors(pageVendors);
-    };
+			const filterVendorCategory = () => {
+				vendorCategory = parseInt(document.getElementById('selectCategory').value);
+				curentPage = 1;
+				const location = document.getElementById('vendor-location').value;
 
-    const filterVendorCategory = () => {
-      vendorCategory = parseInt(
-        document.getElementById("selectCategory").value
-      );
-      curentPage = 1;
-      const location = document.getElementById("vendor-location").value;
+				if (location === '') {
+					const filteredVendors = allVendors.filter(vendor => vendor.category_id === vendorCategory);
+					pageVendors = filteredVendors;
+					displayVendors(pageVendors);
+				} else {
+					const filteredVendors = allVendors.filter(
+						vendor => vendor.category_id === vendorCategory && vendor.location === location
+					);
+					pageVendors = filteredVendors;
+					displayVendors(pageVendors);
+				}
+			};
 
-      if (location === "") {
-        const filteredVendors = allVendors.filter(
-          vendor => vendor.category_id === vendorCategory
-        );
-        pageVendors = filteredVendors;
-        displayVendors(pageVendors);
-      } else {
-        const filteredVendors = allVendors.filter(
-          vendor =>
-          vendor.category_id === vendorCategory &&
-          vendor.location === location
-        );
-        pageVendors = filteredVendors;
-        displayVendors(pageVendors);
-      }
-    };
+			const filterVendorLocation = () => {
+				const location = document.getElementById('vendor-location').value;
+				vendorCategory = parseInt(document.getElementById('selectCategory').value);
+				curentPage = 1;
 
-    const filterVendorLocation = () => {
-      const location = document.getElementById("vendor-location").value;
-      vendorCategory = parseInt(
-        document.getElementById("selectCategory").value
-      );
-      curentPage = 1;
+				let filteredVendors;
 
-      let filteredVendors;
+				if (vendorCategory > 0) {
+					filteredVendors = allVendors.filter(
+						vendor => vendor.category_id === vendorCategory && vendor.location === location
+					);
 
-      if (vendorCategory > 0) {
-        filteredVendors = allVendors.filter(
-          vendor =>
-          vendor.category_id === vendorCategory &&
-          vendor.location === location
-        );
+					pageVendors = filteredVendors;
+					displayVendors(pageVendors);
+				} else {
+					filteredVendors = allVendors.filter(vendor => vendor.location === location);
+					pageVendors = filteredVendors;
+					displayVendors(pageVendors);
+				}
+			};
 
-        pageVendors = filteredVendors;
-        displayVendors(pageVendors);
-      } else {
-        filteredVendors = allVendors.filter(
-          vendor => vendor.location === location
-        );
-        pageVendors = filteredVendors;
-        displayVendors(pageVendors);
-      }
-    };
+			const filterVendorName = () => {
+				const name = document.getElementById('vendor-name').value;
 
-    const filterVendorName = () => {
-      const name = document.getElementById("vendor-name").value;
+				const filteredVendors = allVendors.filter(vendor => vendor.name === name);
+				pageVendors = filteredVendors;
+				displayVendors(pageVendors);
+			};
 
-      const filteredVendors = allVendors.filter(
-        vendor => vendor.name === name
-      );
-      pageVendors = filteredVendors;
-      displayVendors(pageVendors);
-    };
+			const displayVendors = vendors => {
+				const page = curentPage;
+				const data = pagination(vendors, page, itemPerPage);
 
-    const displayVendors = vendors => {
-      const page = curentPage;
-      const data = pagination(vendors, page, itemPerPage);
+				const vendorsDisplay = data.querySet.map(vendor =>
+					vendor.merchant_status === 1
+						? '<div class="card-item">' +
+						  '<div class="card-top">' +
+						  ' <div class="card-top-left">' +
+						  ' <span class="merchant">' +
+						  ' <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"' +
+						  'src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">' +
+						  vendor.shop +
+						  ' </span>' +
+						  '<div class="phone-wrapper">' +
+						  ' <i class="material-icons prefix">phone</i>' +
+						  '<div class="phones">' +
+						  '<a href="tel:+254726202137" class="phone">' +
+						  vendor.phone +
+						  '</a>' +
+						  ' </div>' +
+						  '</div>' +
+						  ' <div class="location">' +
+						  '<i class="material-icons prefix">location_on</i>' +
+						  '<span>' +
+						  vendor.location +
+						  '</span>' +
+						  ' </div>' +
+						  '</div>' +
+						  '<div class="card-icon">' +
+						  '<img class="responsive-img" src="/img/' +
+						  vendor.category +
+						  '.svg"' +
+						  '" alt="Food and Drugs">' +
+						  ' </div>' +
+						  ' </div>' +
+						  '  </div>'
+						: '<div class="card-item">' +
+						  '<div class="card-top">' +
+						  '<div class="card-top-left">' +
+						  '<span class="card-titled">' +
+						  vendor.shop +
+						  '</span>' +
+						  '<div class="phone-wrapper">' +
+						  ' <i class="material-icons prefix">phone</i>' +
+						  '<div class="phones">' +
+						  '<a href="tel:' +
+						  vendor.phone +
+						  '" class="phone">' +
+						  vendor.phone +
+						  '</a>' +
+						  '</div>' +
+						  '</div>' +
+						  '  <div class="location">' +
+						  ' <i class="material-icons prefix">location_on</i>' +
+						  ' <span>' +
+						  ' ' +
+						  vendor.location +
+						  '' +
+						  ' </span>' +
+						  ' </div>' +
+						  ' </div>' +
+						  '<div class="card-icon">' +
+						  '<img class="responsive-img" src="/img/' +
+						  vendor.category +
+						  '.svg" alt="Food and Drugs">' +
+						  '</div>' +
+						  ' </div>' +
+						  '</div>'
+				);
 
-      const vendorsDisplay = data.querySet.map(vendor =>
-        vendor.merchant_status === 1 ?
-        '<div class="card-item">' +
-        '<div class="card-top">' +
-        ' <div class="card-top-left">' +
-        ' <span class="merchant">' +
-        ' <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"' +
-        'src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>">' +
-        vendor.shop +
-        " </span>" +
-        '<div class="phone-wrapper">' +
-        ' <i class="material-icons prefix">phone</i>' +
-        '<div class="phones">' +
-        '<a href="tel:+254726202137" class="phone">' +
-        vendor.phone +
-        "</a>" +
-        " </div>" +
-        "</div>" +
-        ' <div class="location">' +
-        '<i class="material-icons prefix">location_on</i>' +
-        "<span>" +
-        vendor.location +
-        "</span>" +
-        " </div>" +
-        "</div>" +
-        '<div class="card-icon">' +
-        '<img class="responsive-img" src="/img/' +
-        vendor.category +
-        '.svg"' +
-        '" alt="Food and Drugs">' +
-        " </div>" +
-        " </div>" +
-        "  </div>" :
-        '<div class="card-item">' +
-        '<div class="card-top">' +
-        '<div class="card-top-left">' +
-        '<span class="card-titled">' +
-        vendor.shop +
-        "</span>" +
-        '<div class="phone-wrapper">' +
-        ' <i class="material-icons prefix">phone</i>' +
-        '<div class="phones">' +
-        '<a href="tel:' +
-        vendor.phone +
-        '" class="phone">' +
-        vendor.phone +
-        "</a>" +
-        "</div>" +
-        "</div>" +
-        '  <div class="location">' +
-        ' <i class="material-icons prefix">location_on</i>' +
-        " <span>" +
-        " " +
-        vendor.location +
-        "" +
-        " </span>" +
-        " </div>" +
-        " </div>" +
-        '<div class="card-icon">' +
-        '<img class="responsive-img" src="/img/' +
-        vendor.category +
-        '.svg" alt="Food and Drugs">' +
-        "</div>" +
-        " </div>" +
-        "</div>"
-      );
+				if (vendorsDisplay.length > 0) {
+					document.getElementById('vendors').innerHTML = vendorsDisplay.join('');
+				} else {
+					document.getElementById('vendors').innerHTML =
+						'<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
+				}
 
-      if (vendorsDisplay.length > 0) {
-        document.getElementById("vendors").innerHTML = vendorsDisplay.join(
-          ""
-        );
-      } else {
-        document.getElementById("vendors").innerHTML =
-          '<div class="no-results"><img class="responsive-img" src="/img/no_data.svg" alt="No results found"><p>No results found</p></div>';
-      }
+				document.getElementById('paginationCount').innerHTML =
+					'<span>' + page + ' of ' + data.pages + '</span>';
+			};
 
-      document.getElementById("paginationCount").innerHTML =
-        "<span>" + page + " of " + data.pages + "</span>";
-    };
+			const displayCategories = allCategories => {
+				const categories = allCategories.map(cat => '<option value=' + cat.id + '>' + cat.name + '</option>');
+				document.getElementById('selectCategory').innerHTML =
+					'<option value="" disabled selected>Select a category</option>' + categories.join('');
+			};
 
-    const displayCategories = allCategories => {
-      const categories = allCategories.map(
-        cat => "<option value=" + cat.id + ">" + cat.name + "</option>"
-      );
-      document.getElementById("selectCategory").innerHTML =
-        '<option value="" disabled selected>Select a category</option>' +
-        categories.join("");
-    };
-
-    document.addEventListener("DOMContentLoaded", function () {
-      // autocomplete - vendors
-      fetchVendors();
-      fetchCategories();
-      fetchLocations();
-    });
-  </script>
-</body>
-
+			document.addEventListener('DOMContentLoaded', function() {
+				// autocomplete - vendors
+				fetchVendors();
+				fetchCategories();
+				fetchLocations();
+			});
+		</script>
+	</body>
 </html>

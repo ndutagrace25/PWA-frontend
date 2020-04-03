@@ -106,7 +106,7 @@
 							<input type="text" id="vendor-name" class="autocomplete" />
 							<label for="vendor-name">Search vendor name</label>
 						</div>
-						<a class="reset-icon" href="/" onclick="openSearch()"><i class="material-icons">refresh</i></a>
+						<a class="reset-icon" onclick="refreshSearch()"><i class="material-icons">refresh</i></a>
 					</div>
 					<!-- End of Search by nameWrapper-->
 					<!-- Start of Search by location Wrapper-->
@@ -212,6 +212,10 @@
 					})
 					.catch(error => console.error(error));
 			};
+
+      const refreshSearch = () => {
+        displayVendors(allVendors);
+      }
 
 			const pagination = (querySet, page, rows) => {
 				if (querySet.length > 0) {

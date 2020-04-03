@@ -61,37 +61,67 @@
         </li>
     </ul>
 
+    <div style="display: flex; width: 100%; justify-content: center;">
+        <a class="reload-icon" href="/pages/riders.html"><i class="material-icons">autorenew</i></a>
+    </div>
+
     <div class="screen-wrapper">
-        <!-- Start of Search by location Wrapper-->
-        <div class="search-wrapper">
-            <div class="input-field">
-                <i class="material-icons prefix search-icon">search</i>
-                <input type="text" id="rider-location" class="autocomplete" />
-                <label for="rider-location">Search rider location</label>
-            </div>
-            <div class="reset-icon">
-                <a href="/pages/riders.html"><i class="material-icons">autorenew</i></a>
-            </div>
-        </div>
-        <!-- End of Search location Wrapper-->
-
-        <!-- Start of Search name Wrapper-->
-        <div class="search-wrapper">
-            <div class="input-field">
-                <i class="material-icons prefix search-icon">search</i>
-                <input type="text" id="rider-name" class="autocomplete" />
-                <label for="rider-name">Search rider name</label>
-            </div>
-        </div>
-        <!-- End of Search name Wrapper-->
-
-        <!-- Start of Categories Dropdown select -->
-        <div class="input-field select-field">
-            <select class="browser-default" id="selectCategory" onchange="filterRiderCategory()">
-                <option value="" disabled selected>Select a category</option>
-            </select>
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large" onclick="openSearch()"><i class="material-icons">search</i></a>
         </div>
 
+        <div class="modal-custom" id="modal-custom">
+            <div class="close-icon">
+                <a onclick="closeSearch()"><i class="material-icons">close</i></a>
+            </div>
+            <!-- Start of Merchant Card Desc Item-->
+            <div class="card-item" id="merchant-desc">
+                <div class="merchant-top">
+                    <div class="merchant-top-left">
+                        <span class="merchant">
+                            <img class="responsive-img" style="width: 24px !important; margin-right: 10px !important;"
+                                src="/img/mawingu-merchant-icon.svg" alt="Mawingu Merchant>" />
+                            A Mawingu Merchant</span>
+                    </div>
+                    <!-- <div class="close-icon-merch">
+        <a onclick="closeDesc()"><i class="material-icons">close</i></a>
+      </div> -->
+                </div>
+                <p class="description">
+                    <span> To purchase Mawingu bundles at any Mawingu Wi-Fi zone via Mpesa:</span><br />
+                    1. Use Till Number <span class="till">5039633</span><br />
+                    2. Enter amount you wish to spend (10, 20, 50, 100, 200, 500, 1000 or 2000)
+                </p>
+            </div>
+            <!-- End of Merchant Card Desc Item-->
+
+            <div class="search-panel">
+                <!-- Start of Search by name Wrapper-->
+                <div class="search-wrapper">
+                    <div class="input-field" style="width: 80% !important;">
+                        <input type="text" id="rider-name" class="autocomplete" />
+                        <label for="rider-name">Search rider name</label>
+                    </div>
+                    <a class="reset-icon" onclick="refreshSearch()"><i class="material-icons">refresh</i></a>
+                </div>
+                <!-- End of Search by nameWrapper-->
+                <!-- Start of Search by location Wrapper-->
+                <div class="search-wrapper">
+                    <div class="input-field">
+                        <input type="text" id="rider-location" class="autocomplete" />
+                        <label for="rider-location">Search rider location</label>
+                    </div>
+                </div>
+                <!-- End of Search by location Wrapper-->
+
+                <!-- Start of Categories Dropdown select -->
+                <div class="input-field select-field">
+                    <select class="browser-default" id="selectCategory" onchange="filterRiderCategory()">
+                        <option value="" disabled selected>Select a category</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
         <!-- The list of vendors is rendered inside the div below -->
         <div id="riders"></div>
@@ -194,6 +224,10 @@
                 pages: pages
             };
         };
+
+        const refreshSearch = () => {
+            displayRiders(allRiders);
+        }
 
         const nextPage = () => {
             if (curentPage === pages) {
